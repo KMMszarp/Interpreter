@@ -13,12 +13,12 @@ def handle_print(print_expr):
 def handle_function_call(call):
     children = [*call.getChildren()]
 
-    if not isinstance(children[0], antlr4.tree.Tree.TerminalNodeImpl):
-        raise SyntaxError("Expected function call to start with a keyword")
-
     # Chyba niepotrzebne
     # assert children[0].getText() == "wywołaj"
     # assert isinstance(children[1], antlr4.tree.Tree.TerminalNodeImpl)
+
+    if not isinstance(children[1], antlr4.tree.Tree.TerminalNodeImpl):
+        raise SyntaxError("Expected a function name, got " + str(type(children[1])) + " instead")
 
     function_name = children[1].getText()
     if function_name == "napisz":
