@@ -1,6 +1,9 @@
-from kmmszarpErrorListener import kmmszarpErrorListener as baseListener
+import sys
+
+from antlr4.error.ErrorListener import ErrorListener as BaseListener
 
 
-class kmmszarpErrorListener(baseListener):
-    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        print(f"Błąd w linii {line}, kolumnie {column} - nie spodziewałem się: {repr(offendingSymbol.text)}")
+class ErrorListener(BaseListener):
+    def syntaxError(self, recognizer, offending_symbol, line, column, msg, e):
+        s = f"Błąd w linii {line}, kolumnie {column} - nie spodziewałem się: {repr(offending_symbol.text)}"
+        print(s, file=sys.stderr)

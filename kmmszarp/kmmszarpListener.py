@@ -98,12 +98,21 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by kmmszarpParser#variableDeclaration.
-    def enterVariableDeclaration(self, ctx:kmmszarpParser.VariableDeclarationContext):
+    # Enter a parse tree produced by kmmszarpParser#pureVariableDeclaration.
+    def enterPureVariableDeclaration(self, ctx:kmmszarpParser.PureVariableDeclarationContext):
         pass
 
-    # Exit a parse tree produced by kmmszarpParser#variableDeclaration.
-    def exitVariableDeclaration(self, ctx:kmmszarpParser.VariableDeclarationContext):
+    # Exit a parse tree produced by kmmszarpParser#pureVariableDeclaration.
+    def exitPureVariableDeclaration(self, ctx:kmmszarpParser.PureVariableDeclarationContext):
+        pass
+
+
+    # Enter a parse tree produced by kmmszarpParser#variableDeclarationWithAssignment.
+    def enterVariableDeclarationWithAssignment(self, ctx:kmmszarpParser.VariableDeclarationWithAssignmentContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#variableDeclarationWithAssignment.
+    def exitVariableDeclarationWithAssignment(self, ctx:kmmszarpParser.VariableDeclarationWithAssignmentContext):
         pass
 
 
@@ -179,75 +188,120 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by kmmszarpParser#expression.
-    def enterExpression(self, ctx:kmmszarpParser.ExpressionContext):
+    # Enter a parse tree produced by kmmszarpParser#cast.
+    def enterCast(self, ctx:kmmszarpParser.CastContext):
         pass
 
-    # Exit a parse tree produced by kmmszarpParser#expression.
-    def exitExpression(self, ctx:kmmszarpParser.ExpressionContext):
+    # Exit a parse tree produced by kmmszarpParser#cast.
+    def exitCast(self, ctx:kmmszarpParser.CastContext):
         pass
 
 
-    # Enter a parse tree produced by kmmszarpParser#logicOr.
+    # Enter a parse tree produced by kmmszarpParser#LogicOr.
     def enterLogicOr(self, ctx:kmmszarpParser.LogicOrContext):
         pass
 
-    # Exit a parse tree produced by kmmszarpParser#logicOr.
+    # Exit a parse tree produced by kmmszarpParser#LogicOr.
     def exitLogicOr(self, ctx:kmmszarpParser.LogicOrContext):
         pass
 
 
-    # Enter a parse tree produced by kmmszarpParser#logicAnd.
-    def enterLogicAnd(self, ctx:kmmszarpParser.LogicAndContext):
-        pass
-
-    # Exit a parse tree produced by kmmszarpParser#logicAnd.
-    def exitLogicAnd(self, ctx:kmmszarpParser.LogicAndContext):
-        pass
-
-
-    # Enter a parse tree produced by kmmszarpParser#equality.
-    def enterEquality(self, ctx:kmmszarpParser.EqualityContext):
-        pass
-
-    # Exit a parse tree produced by kmmszarpParser#equality.
-    def exitEquality(self, ctx:kmmszarpParser.EqualityContext):
-        pass
-
-
-    # Enter a parse tree produced by kmmszarpParser#comparison.
-    def enterComparison(self, ctx:kmmszarpParser.ComparisonContext):
-        pass
-
-    # Exit a parse tree produced by kmmszarpParser#comparison.
-    def exitComparison(self, ctx:kmmszarpParser.ComparisonContext):
-        pass
-
-
-    # Enter a parse tree produced by kmmszarpParser#addition.
+    # Enter a parse tree produced by kmmszarpParser#Addition.
     def enterAddition(self, ctx:kmmszarpParser.AdditionContext):
         pass
 
-    # Exit a parse tree produced by kmmszarpParser#addition.
+    # Exit a parse tree produced by kmmszarpParser#Addition.
     def exitAddition(self, ctx:kmmszarpParser.AdditionContext):
         pass
 
 
-    # Enter a parse tree produced by kmmszarpParser#multiplication.
+    # Enter a parse tree produced by kmmszarpParser#Multiplication.
     def enterMultiplication(self, ctx:kmmszarpParser.MultiplicationContext):
         pass
 
-    # Exit a parse tree produced by kmmszarpParser#multiplication.
+    # Exit a parse tree produced by kmmszarpParser#Multiplication.
     def exitMultiplication(self, ctx:kmmszarpParser.MultiplicationContext):
         pass
 
 
-    # Enter a parse tree produced by kmmszarpParser#primary.
-    def enterPrimary(self, ctx:kmmszarpParser.PrimaryContext):
+    # Enter a parse tree produced by kmmszarpParser#PrimaryExpression.
+    def enterPrimaryExpression(self, ctx:kmmszarpParser.PrimaryExpressionContext):
         pass
 
-    # Exit a parse tree produced by kmmszarpParser#primary.
-    def exitPrimary(self, ctx:kmmszarpParser.PrimaryContext):
+    # Exit a parse tree produced by kmmszarpParser#PrimaryExpression.
+    def exitPrimaryExpression(self, ctx:kmmszarpParser.PrimaryExpressionContext):
+        pass
+
+
+    # Enter a parse tree produced by kmmszarpParser#Comparison.
+    def enterComparison(self, ctx:kmmszarpParser.ComparisonContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#Comparison.
+    def exitComparison(self, ctx:kmmszarpParser.ComparisonContext):
+        pass
+
+
+    # Enter a parse tree produced by kmmszarpParser#Equality.
+    def enterEquality(self, ctx:kmmszarpParser.EqualityContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#Equality.
+    def exitEquality(self, ctx:kmmszarpParser.EqualityContext):
+        pass
+
+
+    # Enter a parse tree produced by kmmszarpParser#LogicAnd.
+    def enterLogicAnd(self, ctx:kmmszarpParser.LogicAndContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#LogicAnd.
+    def exitLogicAnd(self, ctx:kmmszarpParser.LogicAndContext):
+        pass
+
+
+    # Enter a parse tree produced by kmmszarpParser#IntLiteral.
+    def enterIntLiteral(self, ctx:kmmszarpParser.IntLiteralContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#IntLiteral.
+    def exitIntLiteral(self, ctx:kmmszarpParser.IntLiteralContext):
+        pass
+
+
+    # Enter a parse tree produced by kmmszarpParser#StringLiteral.
+    def enterStringLiteral(self, ctx:kmmszarpParser.StringLiteralContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#StringLiteral.
+    def exitStringLiteral(self, ctx:kmmszarpParser.StringLiteralContext):
+        pass
+
+
+    # Enter a parse tree produced by kmmszarpParser#BoolLiteral.
+    def enterBoolLiteral(self, ctx:kmmszarpParser.BoolLiteralContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#BoolLiteral.
+    def exitBoolLiteral(self, ctx:kmmszarpParser.BoolLiteralContext):
+        pass
+
+
+    # Enter a parse tree produced by kmmszarpParser#VariableReferencePrimary.
+    def enterVariableReferencePrimary(self, ctx:kmmszarpParser.VariableReferencePrimaryContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#VariableReferencePrimary.
+    def exitVariableReferencePrimary(self, ctx:kmmszarpParser.VariableReferencePrimaryContext):
+        pass
+
+
+    # Enter a parse tree produced by kmmszarpParser#ParenthesizedExpression.
+    def enterParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#ParenthesizedExpression.
+    def exitParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
         pass
 
 

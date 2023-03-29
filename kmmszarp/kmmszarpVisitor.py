@@ -59,8 +59,13 @@ class kmmszarpVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#variableDeclaration.
-    def visitVariableDeclaration(self, ctx:kmmszarpParser.VariableDeclarationContext):
+    # Visit a parse tree produced by kmmszarpParser#pureVariableDeclaration.
+    def visitPureVariableDeclaration(self, ctx:kmmszarpParser.PureVariableDeclarationContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by kmmszarpParser#variableDeclarationWithAssignment.
+    def visitVariableDeclarationWithAssignment(self, ctx:kmmszarpParser.VariableDeclarationWithAssignmentContext):
         return self.visitChildren(ctx)
 
 
@@ -104,43 +109,68 @@ class kmmszarpVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#expression.
-    def visitExpression(self, ctx:kmmszarpParser.ExpressionContext):
+    # Visit a parse tree produced by kmmszarpParser#cast.
+    def visitCast(self, ctx:kmmszarpParser.CastContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#logicOr.
+    # Visit a parse tree produced by kmmszarpParser#LogicOr.
     def visitLogicOr(self, ctx:kmmszarpParser.LogicOrContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#logicAnd.
-    def visitLogicAnd(self, ctx:kmmszarpParser.LogicAndContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by kmmszarpParser#equality.
-    def visitEquality(self, ctx:kmmszarpParser.EqualityContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by kmmszarpParser#comparison.
-    def visitComparison(self, ctx:kmmszarpParser.ComparisonContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by kmmszarpParser#addition.
+    # Visit a parse tree produced by kmmszarpParser#Addition.
     def visitAddition(self, ctx:kmmszarpParser.AdditionContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#multiplication.
+    # Visit a parse tree produced by kmmszarpParser#Multiplication.
     def visitMultiplication(self, ctx:kmmszarpParser.MultiplicationContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#primary.
-    def visitPrimary(self, ctx:kmmszarpParser.PrimaryContext):
+    # Visit a parse tree produced by kmmszarpParser#PrimaryExpression.
+    def visitPrimaryExpression(self, ctx:kmmszarpParser.PrimaryExpressionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by kmmszarpParser#Comparison.
+    def visitComparison(self, ctx:kmmszarpParser.ComparisonContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by kmmszarpParser#Equality.
+    def visitEquality(self, ctx:kmmszarpParser.EqualityContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by kmmszarpParser#LogicAnd.
+    def visitLogicAnd(self, ctx:kmmszarpParser.LogicAndContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by kmmszarpParser#IntLiteral.
+    def visitIntLiteral(self, ctx:kmmszarpParser.IntLiteralContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by kmmszarpParser#StringLiteral.
+    def visitStringLiteral(self, ctx:kmmszarpParser.StringLiteralContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by kmmszarpParser#BoolLiteral.
+    def visitBoolLiteral(self, ctx:kmmszarpParser.BoolLiteralContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by kmmszarpParser#VariableReferencePrimary.
+    def visitVariableReferencePrimary(self, ctx:kmmszarpParser.VariableReferencePrimaryContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by kmmszarpParser#ParenthesizedExpression.
+    def visitParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
         return self.visitChildren(ctx)
 
 
