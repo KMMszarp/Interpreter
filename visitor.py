@@ -3,6 +3,7 @@ import antlr4
 from kmmszarp.kmmszarpVisitor import kmmszarpVisitor as baseVisitor
 from kmmszarp.kmmszarpParser import kmmszarpParser
 
+
 # TODO: Remove this function and replace it with a proper visitor
 def handle_print(ctx: kmmszarpParser.ExpressionContext):
     # Very dirty parsing of the print expression starts here
@@ -48,7 +49,7 @@ class Visitor(baseVisitor):
             raise SyntaxError("Expected a function name, got " + str(type(children[1])) + " instead")
 
         function_name = children[1].getText()
-        if function_name == "napisz":
+        if function_name == "NAPISZ":
             handle_print(children[2])
             return None
 
