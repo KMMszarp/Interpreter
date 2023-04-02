@@ -4,29 +4,37 @@ from kmmszarp.kmmszarpVisitor import kmmszarpVisitor as baseVisitor
 from kmmszarp.kmmszarpParser import kmmszarpParser
 
 
-# TODO: Remove this function and replace it with a proper visitor
-def handle_print(ctx: kmmszarpParser.ExpressionContext):
-    # Very dirty parsing of the print expression starts here
-    full_string = ctx.getText()
-    string = full_string[20:-18]
+class Data:
+    def __init__(self):
+        self.variables = {}
 
-    # Very dirty parsing of the print expression ends here
-    print(string)
+    def create_variable(self, name):
+        self.variables[name] = None
+
+    def initialize_variable(self, name, value):
+        assert name in self.variables
+        self.variables[name] = value
+
+    def create_and_initialize_variable(self, name, value):
+        self.create_variable(name)
+        self.initialize_variable(name, value)
+
+    def get_variable(self, name):
+        return self.variables[name]
 
 
 class Visitor(baseVisitor):
+    def __init__(self):
+        self.data = Data()
+
     def visitFunctionCall(self, ctx: kmmszarpParser.FunctionCallContext):
-        children = [*ctx.getChildren()]
+        name = ctx.ID().getText()
 
-        if not isinstance(children[1], antlr4.tree.Tree.TerminalNodeImpl):
-            raise SyntaxError("Expected a function name, got " + str(type(children[1])) + " instead")
+        # TODO: Implement arguments
+        args = self.visit(ctx.argumentList())
 
-        function_name = children[1].getText()
-        if function_name == "NAPISZ":
-            handle_print(children[2])
-            return None
-
-        return super().visitFunctionCall(ctx)
+        if name == "NAPISZ":
+            print(args)
 
     def visitIntLiteral(self, ctx: kmmszarpParser.IntLiteralContext):
         return int(ctx.getText())
@@ -39,24 +47,30 @@ class Visitor(baseVisitor):
 
     def visitPureVariableDeclaration(self, ctx: kmmszarpParser.PureVariableDeclarationContext):
         name = ctx.ID().getText()
-
-        print(name)
+        self.data.create_variable(name)
 
     def visitVariableDeclarationWithAssignment(self, ctx: kmmszarpParser.VariableDeclarationWithAssignmentContext):
         name = ctx.ID().getText()
         value = self.visit(ctx.expression())
 
-        print(name, value)
+        self.data.create_and_initialize_variable(name, value)
         return value
 
     def visitVariableAssignment(self, ctx: kmmszarpParser.VariableAssignmentContext):
         name = ctx.ID().getText()
         value = self.visit(ctx.expression())
 
-        print(name, value)
+        self.data.initialize_variable(name, value)
         return value
 
-    def visitMultiplication(self, ctx:kmmszarpParser.MultiplicationContext):
+    def visitVariableReference(self, ctx: kmmszarpParser.VariableReferenceContext):
+        name = ctx.ID().getText()
+        return self.data.get_variable(name)
+
+    def visitVariableReferencePrimary(self, ctx: kmmszarpParser.VariableReferencePrimaryContext):
+        return self.visit(ctx.variableReference())
+
+    def visitMultiplication(self, ctx: kmmszarpParser.MultiplicationContext):
         factor_1 = self.visit(ctx.expression(0))
         factor_2 = self.visit(ctx.expression(1))
         operator = ctx.op.text
