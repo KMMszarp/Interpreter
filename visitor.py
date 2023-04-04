@@ -1,26 +1,7 @@
-import antlr4
-
 from kmmszarp.kmmszarpVisitor import kmmszarpVisitor as baseVisitor
 from kmmszarp.kmmszarpParser import kmmszarpParser
 
-
-class Data:
-    def __init__(self):
-        self.variables = {}
-
-    def create_variable(self, name):
-        self.variables[name] = None
-
-    def initialize_variable(self, name, value):
-        assert name in self.variables
-        self.variables[name] = value
-
-    def create_and_initialize_variable(self, name, value):
-        self.create_variable(name)
-        self.initialize_variable(name, value)
-
-    def get_variable(self, name):
-        return self.variables[name]
+from type import Data
 
 
 class Visitor(baseVisitor):
