@@ -40,7 +40,7 @@ class Visitor(baseVisitor):
         return int(ctx.getText())
 
     def visitStringLiteral(self, ctx: kmmszarpParser.StringLiteralContext):
-        return ctx.getText()
+        return ctx.getText().replace('początek cudzysłowu ', '', 1).replace(' koniec cudzysłowu', '', 1)
 
     def visitBoolLiteral(self, ctx: kmmszarpParser.BoolLiteralContext):
         return ctx.getText() == "prawda"
