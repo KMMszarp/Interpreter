@@ -75,12 +75,13 @@ class Visitor(baseVisitor):
         factor_2 = self.visit(ctx.expression(1))
         operator = ctx.op.text
 
-        multiplication = True if operator == "razy" else False
-
-        if multiplication:
+        if operator == "razy":
             return factor_1 * factor_2
 
-        return factor_1 // factor_2
+        if operator == "przez":
+            return factor_1 // factor_2
+
+        return factor_1 % factor_2
 
     def visitAddition(self, ctx: kmmszarpParser.AdditionContext):
         term_1 = self.visit(ctx.expression(0))
