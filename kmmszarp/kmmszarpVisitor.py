@@ -119,13 +119,13 @@ class kmmszarpVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#Addition.
-    def visitAddition(self, ctx:kmmszarpParser.AdditionContext):
+    # Visit a parse tree produced by kmmszarpParser#Multiplication.
+    def visitMultiplication(self, ctx:kmmszarpParser.MultiplicationContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#Multiplication.
-    def visitMultiplication(self, ctx:kmmszarpParser.MultiplicationContext):
+    # Visit a parse tree produced by kmmszarpParser#Addition.
+    def visitAddition(self, ctx:kmmszarpParser.AdditionContext):
         return self.visitChildren(ctx)
 
 

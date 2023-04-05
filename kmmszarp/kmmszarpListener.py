@@ -206,21 +206,21 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by kmmszarpParser#Addition.
-    def enterAddition(self, ctx:kmmszarpParser.AdditionContext):
-        pass
-
-    # Exit a parse tree produced by kmmszarpParser#Addition.
-    def exitAddition(self, ctx:kmmszarpParser.AdditionContext):
-        pass
-
-
     # Enter a parse tree produced by kmmszarpParser#Multiplication.
     def enterMultiplication(self, ctx:kmmszarpParser.MultiplicationContext):
         pass
 
     # Exit a parse tree produced by kmmszarpParser#Multiplication.
     def exitMultiplication(self, ctx:kmmszarpParser.MultiplicationContext):
+        pass
+
+
+    # Enter a parse tree produced by kmmszarpParser#Addition.
+    def enterAddition(self, ctx:kmmszarpParser.AdditionContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#Addition.
+    def exitAddition(self, ctx:kmmszarpParser.AdditionContext):
         pass
 
 

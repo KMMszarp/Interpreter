@@ -22,18 +22,16 @@ class Data:
 
 class Type(Enum):
     INT = 1
-    FLOAT = 2
-    STRING = 3
-    BOOL = 4
-    VOID = 5
-    ARRAY = 6
-    FUNCTION = 7
+    STRING = 2
+    BOOL = 3
+    VOID = 4
+    ARRAY = 5
+    FUNCTION = 6
 
-    ARRAY_OF_INT = 8
-    ARRAY_OF_FLOAT = 9
-    ARRAY_OF_STRING = 10
-    ARRAY_OF_BOOL = 11
-    ARRAY_OF_ARRAY = 12
+    ARRAY_OF_INT = 7
+    ARRAY_OF_STRING = 8
+    ARRAY_OF_BOOL = 9
+    ARRAY_OF_ARRAY = 10
 
 
 class Array:

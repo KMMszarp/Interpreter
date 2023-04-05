@@ -38,7 +38,7 @@ def serializedATN():
         1,20,1,20,1,20,1,20,5,20,324,8,20,10,20,12,20,327,9,20,1,21,1,21,
         1,21,1,21,1,21,1,21,1,21,1,21,3,21,337,8,21,1,22,1,22,1,22,1,205,
         1,40,23,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,
-        42,44,0,5,1,0,33,34,1,0,35,38,1,0,39,40,1,0,41,43,1,0,44,47,366,
+        42,44,0,5,1,0,31,33,1,0,34,35,1,0,36,39,1,0,40,41,1,0,44,47,366,
         0,53,1,0,0,0,2,67,1,0,0,0,4,69,1,0,0,0,6,93,1,0,0,0,8,113,1,0,0,
         0,10,133,1,0,0,0,12,176,1,0,0,0,14,218,1,0,0,0,16,220,1,0,0,0,18,
         224,1,0,0,0,20,237,1,0,0,0,22,239,1,0,0,0,24,255,1,0,0,0,26,259,
@@ -117,15 +117,15 @@ def serializedATN():
         293,1,0,0,0,293,296,1,0,0,0,294,292,1,0,0,0,295,283,1,0,0,0,295,
         296,1,0,0,0,296,37,1,0,0,0,297,298,5,30,0,0,298,299,3,40,20,0,299,
         300,5,27,0,0,300,301,3,44,22,0,301,39,1,0,0,0,302,303,6,20,-1,0,
-        303,304,3,42,21,0,304,325,1,0,0,0,305,306,10,7,0,0,306,307,5,31,
-        0,0,307,324,3,40,20,8,308,309,10,6,0,0,309,310,5,32,0,0,310,324,
-        3,40,20,7,311,312,10,5,0,0,312,313,7,0,0,0,313,324,3,40,20,6,314,
-        315,10,4,0,0,315,316,7,1,0,0,316,324,3,40,20,5,317,318,10,3,0,0,
-        318,319,7,2,0,0,319,324,3,40,20,4,320,321,10,2,0,0,321,322,7,3,0,
-        0,322,324,3,40,20,3,323,305,1,0,0,0,323,308,1,0,0,0,323,311,1,0,
-        0,0,323,314,1,0,0,0,323,317,1,0,0,0,323,320,1,0,0,0,324,327,1,0,
-        0,0,325,323,1,0,0,0,325,326,1,0,0,0,326,41,1,0,0,0,327,325,1,0,0,
-        0,328,337,5,50,0,0,329,337,5,52,0,0,330,337,5,53,0,0,331,337,3,26,
+        303,304,3,42,21,0,304,325,1,0,0,0,305,306,10,7,0,0,306,307,7,0,0,
+        0,307,324,3,40,20,8,308,309,10,6,0,0,309,310,7,1,0,0,310,324,3,40,
+        20,7,311,312,10,5,0,0,312,313,7,2,0,0,313,324,3,40,20,6,314,315,
+        10,4,0,0,315,316,7,3,0,0,316,324,3,40,20,5,317,318,10,3,0,0,318,
+        319,5,42,0,0,319,324,3,40,20,4,320,321,10,2,0,0,321,322,5,43,0,0,
+        322,324,3,40,20,3,323,305,1,0,0,0,323,308,1,0,0,0,323,311,1,0,0,
+        0,323,314,1,0,0,0,323,317,1,0,0,0,323,320,1,0,0,0,324,327,1,0,0,
+        0,325,323,1,0,0,0,325,326,1,0,0,0,326,41,1,0,0,0,327,325,1,0,0,0,
+        328,337,5,50,0,0,329,337,5,52,0,0,330,337,5,53,0,0,331,337,3,26,
         13,0,332,333,5,54,0,0,333,334,3,40,20,0,334,335,5,55,0,0,335,337,
         1,0,0,0,336,328,1,0,0,0,336,329,1,0,0,0,336,330,1,0,0,0,336,331,
         1,0,0,0,336,332,1,0,0,0,337,43,1,0,0,0,338,339,7,4,0,0,339,45,1,
@@ -153,14 +153,14 @@ class kmmszarpParser ( Parser ):
                      "'i'", "'zmienna'", "'zwr\\u00F3\\u0107'", "'to'", 
                      "'tablica'", "'o d\\u0142ugo\\u015Bci'", "'we\\u017A'", 
                      "'element'", "'w\\u0142\\u00F3\\u017C'", "'na'", "'miejsce'", 
-                     "'wywo\\u0142aj'", "'rzu\\u0107'", "'lub'", "'oraz'", 
-                     "'r\\u00F3wne'", "'nier\\u00F3wne'", "'wi\\u0119ksze ni\\u017C'", 
-                     "'mniejsze ni\\u017C'", "'wi\\u0119ksze lub r\\u00F3wne'", 
-                     "'mniejsze lub r\\u00F3wne'", "'doda\\u0107'", "'odj\\u0105\\u0107'", 
-                     "'razy'", "'przez'", "'modu\\u0142'", "'liczba'", "'napis'", 
-                     "'prawdziwo\\u015B\\u0107'", "'nico\\u015B\\u0107'", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "'pocz\\u0105tek nawiasu'", 
+                     "'wywo\\u0142aj'", "'rzu\\u0107'", "'razy'", "'przez'", 
+                     "'modu\\u0142'", "'doda\\u0107'", "'odj\\u0105\\u0107'", 
+                     "'wi\\u0119ksze ni\\u017C'", "'mniejsze ni\\u017C'", 
+                     "'wi\\u0119ksze lub r\\u00F3wne'", "'mniejsze lub r\\u00F3wne'", 
+                     "'r\\u00F3wne'", "'nier\\u00F3wne'", "'oraz'", "'lub'", 
+                     "'liczba'", "'napis'", "'prawdziwo\\u015B\\u0107'", 
+                     "'nico\\u015B\\u0107'", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "<INVALID>", "<INVALID>", "<INVALID>", "'pocz\\u0105tek nawiasu'", 
                      "'koniec nawiasu'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
@@ -2004,35 +2004,6 @@ class kmmszarpParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
-    class AdditionContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a kmmszarpParser.ExpressionContext
-            super().__init__(parser)
-            self.op = None # Token
-            self.copyFrom(ctx)
-
-        def expression(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(kmmszarpParser.ExpressionContext)
-            else:
-                return self.getTypedRuleContext(kmmszarpParser.ExpressionContext,i)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAddition" ):
-                listener.enterAddition(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAddition" ):
-                listener.exitAddition(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAddition" ):
-                return visitor.visitAddition(self)
-            else:
-                return visitor.visitChildren(self)
-
-
     class MultiplicationContext(ExpressionContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a kmmszarpParser.ExpressionContext
@@ -2058,6 +2029,35 @@ class kmmszarpParser ( Parser ):
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMultiplication" ):
                 return visitor.visitMultiplication(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class AdditionContext(ExpressionContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a kmmszarpParser.ExpressionContext
+            super().__init__(parser)
+            self.op = None # Token
+            self.copyFrom(ctx)
+
+        def expression(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(kmmszarpParser.ExpressionContext)
+            else:
+                return self.getTypedRuleContext(kmmszarpParser.ExpressionContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAddition" ):
+                listener.enterAddition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAddition" ):
+                listener.exitAddition(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAddition" ):
+                return visitor.visitAddition(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -2204,43 +2204,55 @@ class kmmszarpParser ( Parser ):
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,30,self._ctx)
                     if la_ == 1:
-                        localctx = kmmszarpParser.LogicOrContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
+                        localctx = kmmszarpParser.MultiplicationContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 305
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
                         self.state = 306
-                        localctx.or_ = self.match(kmmszarpParser.T__30)
+                        localctx.op = self._input.LT(1)
+                        _la = self._input.LA(1)
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 15032385536) != 0)):
+                            localctx.op = self._errHandler.recoverInline(self)
+                        else:
+                            self._errHandler.reportMatch(self)
+                            self.consume()
                         self.state = 307
                         self.expression(8)
                         pass
 
                     elif la_ == 2:
-                        localctx = kmmszarpParser.LogicAndContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
+                        localctx = kmmszarpParser.AdditionContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 308
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
                         self.state = 309
-                        localctx.and_ = self.match(kmmszarpParser.T__31)
+                        localctx.op = self._input.LT(1)
+                        _la = self._input.LA(1)
+                        if not(_la==34 or _la==35):
+                            localctx.op = self._errHandler.recoverInline(self)
+                        else:
+                            self._errHandler.reportMatch(self)
+                            self.consume()
                         self.state = 310
                         self.expression(7)
                         pass
 
                     elif la_ == 3:
-                        localctx = kmmszarpParser.EqualityContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
+                        localctx = kmmszarpParser.ComparisonContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 311
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
                         self.state = 312
-                        localctx.eq = self._input.LT(1)
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la==33 or _la==34):
-                            localctx.eq = self._errHandler.recoverInline(self)
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 1030792151040) != 0)):
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
@@ -2249,17 +2261,17 @@ class kmmszarpParser ( Parser ):
                         pass
 
                     elif la_ == 4:
-                        localctx = kmmszarpParser.ComparisonContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
+                        localctx = kmmszarpParser.EqualityContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 314
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
                         self.state = 315
-                        localctx.op = self._input.LT(1)
+                        localctx.eq = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 515396075520) != 0)):
-                            localctx.op = self._errHandler.recoverInline(self)
+                        if not(_la==40 or _la==41):
+                            localctx.eq = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
@@ -2268,39 +2280,27 @@ class kmmszarpParser ( Parser ):
                         pass
 
                     elif la_ == 5:
-                        localctx = kmmszarpParser.AdditionContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
+                        localctx = kmmszarpParser.LogicAndContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 317
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
                         self.state = 318
-                        localctx.op = self._input.LT(1)
-                        _la = self._input.LA(1)
-                        if not(_la==39 or _la==40):
-                            localctx.op = self._errHandler.recoverInline(self)
-                        else:
-                            self._errHandler.reportMatch(self)
-                            self.consume()
+                        localctx.and_ = self.match(kmmszarpParser.T__41)
                         self.state = 319
                         self.expression(4)
                         pass
 
                     elif la_ == 6:
-                        localctx = kmmszarpParser.MultiplicationContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
+                        localctx = kmmszarpParser.LogicOrContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 320
                         if not self.precpred(self._ctx, 2):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
                         self.state = 321
-                        localctx.op = self._input.LT(1)
-                        _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 15393162788864) != 0)):
-                            localctx.op = self._errHandler.recoverInline(self)
-                        else:
-                            self._errHandler.reportMatch(self)
-                            self.consume()
+                        localctx.or_ = self.match(kmmszarpParser.T__42)
                         self.state = 322
                         self.expression(3)
                         pass
