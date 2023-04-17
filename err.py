@@ -9,6 +9,25 @@ class ErrorListener(BaseListener):
         print(s, file=stderr)
 
 
+class VariableError(Exception):
+    pass
+
+
+class VariableRedeclarationError(VariableError):
+    def __init__(self, variable_name):
+        self.variable_name = variable_name
+
+
+class VariableNotDeclaredError(VariableError):
+    def __init__(self, variable_name):
+        self.variable_name = variable_name
+
+
+class VariableNotInitializedError(VariableError):
+    def __init__(self, variable_name):
+        self.variable_name = variable_name
+
+
 class ExecutionError(Exception):
     def __init__(self, line, column, msg):
         self.line = line

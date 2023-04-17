@@ -1,6 +1,6 @@
 from kmmszarp.kmmszarpVisitor import kmmszarpVisitor as baseVisitor
 from kmmszarp.kmmszarpParser import kmmszarpParser
-from err import ExecutionError
+from err import ExecutionError, VariableNotDeclaredError, VariableNotInitializedError, VariableRedeclarationError
 
 from type import Data, Type, Variable, Array
 
@@ -15,6 +15,10 @@ class Visitor(baseVisitor):
             if stmt.variableDeclaration():
                 variable_type = stmt.variableDeclaration().dtype().getText()
                 variable_name = stmt.variableDeclaration().ID().getText()
+
+                if variable_name in self.data.variables:
+                    raise ExecutionError(ctx.start.line, ctx.start.column,
+                                         f"Zmienna {variable_name} została już zadeklarowana")
 
                 if variable_type == "liczba":
                     self.data.create_variable(variable_name, Type.INT)
@@ -56,16 +60,24 @@ class Visitor(baseVisitor):
 
     def visitVariableDeclarationWithAssignment(self, ctx: kmmszarpParser.VariableDeclarationWithAssignmentContext):
         name = ctx.ID().getText()
-        # type = ctx.type().getText()
+        dtype = Type.from_string(ctx.dtype().getText())
         value = self.visit(ctx.expression())
 
-        self.data.initialize_variable(name, value)
-        return value
+        if dtype != value.dtype:
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Nie można przypisać wartości typu {value.dtype} do zmiennej typu {dtype}")
+
+        return self.data.set_variable(name, value)
 
     def visitVariableAssignment(self, ctx: kmmszarpParser.VariableAssignmentContext):
         name = ctx.ID().getText()
+
+        if not self.data.check_if_declared(name):
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Zmienna {name} nie została zadeklarowana")
+
         value = self.visit(ctx.expression())
-        expected_type = self.data.get_variable(name).dtype
+        expected_type = self.data.variables[name].dtype
         actual_type = value.dtype
 
         if expected_type != actual_type:
@@ -73,11 +85,19 @@ class Visitor(baseVisitor):
                                  f"Nie można przypisać wartości typu {actual_type} do zmiennej typu {expected_type}")
 
         self.data.set_variable(name, value)
+
         return value
 
     def visitVariableReference(self, ctx: kmmszarpParser.VariableReferenceContext):
         name = ctx.ID().getText()
-        return self.data.get_variable(name)
+        try:
+            return self.data.get_variable(name)
+        except VariableNotInitializedError as e:
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Zmienna {e.variable_name} nie została zainicjalizowana")
+        except VariableNotDeclaredError as e:
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Zmienna {e.variable_name} nie została zadeklarowana")
 
     def visitVariableReferencePrimary(self, ctx: kmmszarpParser.VariableReferencePrimaryContext):
         return self.visit(ctx.variableReference())
@@ -169,8 +189,8 @@ class Visitor(baseVisitor):
         result = None
 
         if operator == "równe":
-            result = left == right
+            result = raw_left == raw_right
         else:
-            result = left != right
+            result = raw_left != raw_right
 
         return Variable("_tmp", Type.BOOL, result)
