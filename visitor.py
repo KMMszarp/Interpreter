@@ -1,12 +1,33 @@
 from kmmszarp.kmmszarpVisitor import kmmszarpVisitor as baseVisitor
 from kmmszarp.kmmszarpParser import kmmszarpParser
+from err import ExecutionError
 
-from type import Data
+from type import Data, Type, Variable, Array
 
 
 class Visitor(baseVisitor):
     def __init__(self):
         self.data = Data()
+
+    def visitProgram(self, ctx: kmmszarpParser.ProgramContext):
+        # Get all top level variable declarations
+        for stmt in ctx.statement():
+            if stmt.variableDeclaration():
+                variable_type = stmt.variableDeclaration().dtype().getText()
+                variable_name = stmt.variableDeclaration().ID().getText()
+
+                if variable_type == "liczba":
+                    self.data.create_variable(variable_name, Type.INT)
+                elif variable_type == "napis":
+                    self.data.create_variable(variable_name, Type.STRING)
+                elif variable_type == "prawdziwość":
+                    self.data.create_variable(variable_name, Type.BOOL)
+                else:
+                    raise ExecutionError(ctx.start.line, ctx.start.column, "Nieznany typ zmiennej")
+
+        # Execute all statements
+        for stmt in ctx.statement():
+            self.visit(stmt)
 
     def visitFunctionCall(self, ctx: kmmszarpParser.FunctionCallContext):
         name = ctx.ID().getText()
@@ -18,30 +39,40 @@ class Visitor(baseVisitor):
             print(args)
 
     def visitIntLiteral(self, ctx: kmmszarpParser.IntLiteralContext):
-        return int(ctx.getText())
+        raw_value = ctx.getText()
+        return Variable("_tmp", Type.INT, int(raw_value))
 
     def visitStringLiteral(self, ctx: kmmszarpParser.StringLiteralContext):
-        return ctx.getText().replace('początek cudzysłowu ', '', 1).replace(' koniec cudzysłowu', '', 1)
+        raw_value = ctx.getText().replace('początek cudzysłowu ', '', 1).replace(' koniec cudzysłowu', '', 1)
+        return Variable("_tmp", Type.STRING, raw_value)
 
     def visitBoolLiteral(self, ctx: kmmszarpParser.BoolLiteralContext):
-        return ctx.getText() == "prawda"
+        raw_value = ctx.getText() == "prawda"
+        return Variable("_tmp", Type.BOOL, raw_value)
 
-    def visitPureVariableDeclaration(self, ctx: kmmszarpParser.PureVariableDeclarationContext):
-        name = ctx.ID().getText()
-        self.data.create_variable(name)
+    #def visitPureVariableDeclaration(self, ctx: kmmszarpParser.PureVariableDeclarationContext):
+    #    name = ctx.ID().getText()
+    #    self.data.create_variable(name)
 
     def visitVariableDeclarationWithAssignment(self, ctx: kmmszarpParser.VariableDeclarationWithAssignmentContext):
         name = ctx.ID().getText()
+        # type = ctx.type().getText()
         value = self.visit(ctx.expression())
 
-        self.data.create_and_initialize_variable(name, value)
+        self.data.initialize_variable(name, value)
         return value
 
     def visitVariableAssignment(self, ctx: kmmszarpParser.VariableAssignmentContext):
         name = ctx.ID().getText()
         value = self.visit(ctx.expression())
+        expected_type = self.data.get_variable(name).dtype
+        actual_type = value.dtype
 
-        self.data.initialize_variable(name, value)
+        if expected_type != actual_type:
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Nie można przypisać wartości typu {actual_type} do zmiennej typu {expected_type}")
+
+        self.data.set_variable(name, value)
         return value
 
     def visitVariableReference(self, ctx: kmmszarpParser.VariableReferenceContext):
@@ -52,50 +83,94 @@ class Visitor(baseVisitor):
         return self.visit(ctx.variableReference())
 
     def visitMultiplication(self, ctx: kmmszarpParser.MultiplicationContext):
-        factor_1 = self.visit(ctx.expression(0))
-        factor_2 = self.visit(ctx.expression(1))
+        factor_1: Variable = self.visit(ctx.expression(0))
+        factor_2: Variable = self.visit(ctx.expression(1))
         operator = ctx.op.text
 
+        if factor_1.dtype != factor_2.dtype:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można mnożyć różnych typów")
+
+        if factor_1.dtype != Type.INT:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można mnożyć typu " + factor_1.dtype.name)
+
+        raw_factor_1 = factor_1.value
+        raw_factor_2 = factor_2.value
+        result = 0
+
         if operator == "razy":
-            return factor_1 * factor_2
+            result = raw_factor_1 * raw_factor_2
+        elif operator == "przez":
+            if raw_factor_2 == 0:
+                raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można dzielić przez 0")
 
-        if operator == "przez":
-            return factor_1 // factor_2
+            result = raw_factor_1 // raw_factor_2
+        else:
+            result = raw_factor_1 % raw_factor_2
 
-        return factor_1 % factor_2
+        return Variable("_tmp", Type.INT, result)
 
     def visitAddition(self, ctx: kmmszarpParser.AdditionContext):
         term_1 = self.visit(ctx.expression(0))
         term_2 = self.visit(ctx.expression(1))
         operator = ctx.op.text
 
+        if term_1.dtype != term_2.dtype:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można dodawać różnych typów")
+
+        if term_1.dtype != Type.INT:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można dodawać typu " + term_1.dtype.name)
+
+        raw_term_1 = term_1.value
+        raw_term_2 = term_2.value
+        result = 0
+
         addition = True if operator == "dodać" else False
 
         if addition:
-            return term_1 + term_2
+            result = raw_term_1 + raw_term_2
+        else:
+            result = raw_term_1 - raw_term_2
 
-        return term_1 - term_2
+        return Variable("_tmp", Type.INT, result)
 
     def visitComparison(self, ctx: kmmszarpParser.ComparisonContext):
         left = self.visit(ctx.expression(0))
         right = self.visit(ctx.expression(1))
         operator = ctx.op.text
 
+        if left.dtype != right.dtype:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można porównywać różnych typów")
+
+        raw_left = left.value
+        raw_right = right.value
+        result = None
+
         if operator == "mniejsze niż":
-            return left < right
+            result = raw_left < raw_right
         elif operator == "większe niż":
-            return left > right
+            result = raw_left > raw_right
         elif operator == "mniejsze lub równe":
-            return left <= right
+            result = raw_left <= raw_right
         elif operator == "większe lub równe":
-            return left >= right
+            result = raw_left >= raw_right
+
+        return Variable("_tmp", Type.BOOL, result)
 
     def visitEquality(self, ctx: kmmszarpParser.EqualityContext):
         left = self.visit(ctx.expression(0))
         right = self.visit(ctx.expression(1))
         operator = ctx.op.text
 
-        if operator == "równe":
-            return left == right
+        if left.dtype != right.dtype:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można porównywać różnych typów")
 
-        return left != right
+        raw_left = left.value
+        raw_right = right.value
+        result = None
+
+        if operator == "równe":
+            result = left == right
+        else:
+            result = left != right
+
+        return Variable("_tmp", Type.BOOL, result)

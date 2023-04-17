@@ -44,21 +44,21 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by kmmszarpParser#conditional.
-    def enterConditional(self, ctx:kmmszarpParser.ConditionalContext):
+    # Enter a parse tree produced by kmmszarpParser#conditionalStatement.
+    def enterConditionalStatement(self, ctx:kmmszarpParser.ConditionalStatementContext):
         pass
 
-    # Exit a parse tree produced by kmmszarpParser#conditional.
-    def exitConditional(self, ctx:kmmszarpParser.ConditionalContext):
+    # Exit a parse tree produced by kmmszarpParser#conditionalStatement.
+    def exitConditionalStatement(self, ctx:kmmszarpParser.ConditionalStatementContext):
         pass
 
 
-    # Enter a parse tree produced by kmmszarpParser#ifelse.
-    def enterIfelse(self, ctx:kmmszarpParser.IfelseContext):
+    # Enter a parse tree produced by kmmszarpParser#conditionalStatementElse.
+    def enterConditionalStatementElse(self, ctx:kmmszarpParser.ConditionalStatementElseContext):
         pass
 
-    # Exit a parse tree produced by kmmszarpParser#ifelse.
-    def exitIfelse(self, ctx:kmmszarpParser.IfelseContext):
+    # Exit a parse tree produced by kmmszarpParser#conditionalStatementElse.
+    def exitConditionalStatementElse(self, ctx:kmmszarpParser.ConditionalStatementElseContext):
         pass
 
 
@@ -305,12 +305,12 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by kmmszarpParser#type.
-    def enterType(self, ctx:kmmszarpParser.TypeContext):
+    # Enter a parse tree produced by kmmszarpParser#dtype.
+    def enterDtype(self, ctx:kmmszarpParser.DtypeContext):
         pass
 
-    # Exit a parse tree produced by kmmszarpParser#type.
-    def exitType(self, ctx:kmmszarpParser.TypeContext):
+    # Exit a parse tree produced by kmmszarpParser#dtype.
+    def exitDtype(self, ctx:kmmszarpParser.DtypeContext):
         pass
 
 

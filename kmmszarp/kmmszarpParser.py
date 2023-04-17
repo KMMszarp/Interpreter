@@ -182,8 +182,8 @@ class kmmszarpParser ( Parser ):
     RULE_statement = 1
     RULE_loopFor = 2
     RULE_loopWhile = 3
-    RULE_conditional = 4
-    RULE_ifelse = 5
+    RULE_conditionalStatement = 4
+    RULE_conditionalStatementElse = 5
     RULE_functionDefinition = 6
     RULE_parameterList = 7
     RULE_parameter = 8
@@ -200,14 +200,15 @@ class kmmszarpParser ( Parser ):
     RULE_cast = 19
     RULE_expression = 20
     RULE_primary = 21
-    RULE_type = 22
+    RULE_dtype = 22
 
-    ruleNames =  [ "program", "statement", "loopFor", "loopWhile", "conditional", 
-                   "ifelse", "functionDefinition", "parameterList", "parameter", 
-                   "returnStatement", "variableDeclaration", "arrayDeclaration", 
-                   "arrayValue", "variableReference", "arrayAccess", "variableAssignment", 
-                   "arrayAssignment", "functionCall", "argumentList", "cast", 
-                   "expression", "primary", "type" ]
+    ruleNames =  [ "program", "statement", "loopFor", "loopWhile", "conditionalStatement", 
+                   "conditionalStatementElse", "functionDefinition", "parameterList", 
+                   "parameter", "returnStatement", "variableDeclaration", 
+                   "arrayDeclaration", "arrayValue", "variableReference", 
+                   "arrayAccess", "variableAssignment", "arrayAssignment", 
+                   "functionCall", "argumentList", "cast", "expression", 
+                   "primary", "dtype" ]
 
     EOF = Token.EOF
     T__0=1
@@ -378,12 +379,12 @@ class kmmszarpParser ( Parser ):
             return self.getTypedRuleContext(kmmszarpParser.LoopWhileContext,0)
 
 
-        def conditional(self):
-            return self.getTypedRuleContext(kmmszarpParser.ConditionalContext,0)
+        def conditionalStatement(self):
+            return self.getTypedRuleContext(kmmszarpParser.ConditionalStatementContext,0)
 
 
-        def ifelse(self):
-            return self.getTypedRuleContext(kmmszarpParser.IfelseContext,0)
+        def conditionalStatementElse(self):
+            return self.getTypedRuleContext(kmmszarpParser.ConditionalStatementElseContext,0)
 
 
         def functionDefinition(self):
@@ -457,13 +458,13 @@ class kmmszarpParser ( Parser ):
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 58
-                self.conditional()
+                self.conditionalStatement()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
                 self.state = 59
-                self.ifelse()
+                self.conditionalStatementElse()
                 pass
 
             elif la_ == 5:
@@ -717,7 +718,7 @@ class kmmszarpParser ( Parser ):
         return localctx
 
 
-    class ConditionalContext(ParserRuleContext):
+    class ConditionalStatementContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -742,29 +743,29 @@ class kmmszarpParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return kmmszarpParser.RULE_conditional
+            return kmmszarpParser.RULE_conditionalStatement
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterConditional" ):
-                listener.enterConditional(self)
+            if hasattr( listener, "enterConditionalStatement" ):
+                listener.enterConditionalStatement(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitConditional" ):
-                listener.exitConditional(self)
+            if hasattr( listener, "exitConditionalStatement" ):
+                listener.exitConditionalStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitConditional" ):
-                return visitor.visitConditional(self)
+            if hasattr( visitor, "visitConditionalStatement" ):
+                return visitor.visitConditionalStatement(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
 
-    def conditional(self):
+    def conditionalStatement(self):
 
-        localctx = kmmszarpParser.ConditionalContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 8, self.RULE_conditional)
+        localctx = kmmszarpParser.ConditionalStatementContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 8, self.RULE_conditionalStatement)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
@@ -809,7 +810,7 @@ class kmmszarpParser ( Parser ):
         return localctx
 
 
-    class IfelseContext(ParserRuleContext):
+    class ConditionalStatementElseContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -834,29 +835,29 @@ class kmmszarpParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return kmmszarpParser.RULE_ifelse
+            return kmmszarpParser.RULE_conditionalStatementElse
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIfelse" ):
-                listener.enterIfelse(self)
+            if hasattr( listener, "enterConditionalStatementElse" ):
+                listener.enterConditionalStatementElse(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIfelse" ):
-                listener.exitIfelse(self)
+            if hasattr( listener, "exitConditionalStatementElse" ):
+                listener.exitConditionalStatementElse(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIfelse" ):
-                return visitor.visitIfelse(self)
+            if hasattr( visitor, "visitConditionalStatementElse" ):
+                return visitor.visitConditionalStatementElse(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
 
-    def ifelse(self):
+    def conditionalStatementElse(self):
 
-        localctx = kmmszarpParser.IfelseContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_ifelse)
+        localctx = kmmszarpParser.ConditionalStatementElseContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 10, self.RULE_conditionalStatementElse)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
@@ -949,8 +950,8 @@ class kmmszarpParser ( Parser ):
         def ID(self):
             return self.getToken(kmmszarpParser.ID, 0)
 
-        def type_(self):
-            return self.getTypedRuleContext(kmmszarpParser.TypeContext,0)
+        def dtype(self):
+            return self.getTypedRuleContext(kmmszarpParser.DtypeContext,0)
 
 
         def parameterList(self):
@@ -1018,7 +1019,7 @@ class kmmszarpParser ( Parser ):
             self.state = 182
             self.match(kmmszarpParser.T__14)
             self.state = 183
-            self.type_()
+            self.dtype()
             self.state = 184
             self.match(kmmszarpParser.T__15)
             self.state = 188
@@ -1151,8 +1152,8 @@ class kmmszarpParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def type_(self):
-            return self.getTypedRuleContext(kmmszarpParser.TypeContext,0)
+        def dtype(self):
+            return self.getTypedRuleContext(kmmszarpParser.DtypeContext,0)
 
 
         def ID(self):
@@ -1187,7 +1188,7 @@ class kmmszarpParser ( Parser ):
             self.state = 220
             self.match(kmmszarpParser.T__18)
             self.state = 221
-            self.type_()
+            self.dtype()
             self.state = 222
             self.match(kmmszarpParser.ID)
         except RecognitionException as re:
@@ -1272,8 +1273,8 @@ class kmmszarpParser ( Parser ):
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def type_(self):
-            return self.getTypedRuleContext(kmmszarpParser.TypeContext,0)
+        def dtype(self):
+            return self.getTypedRuleContext(kmmszarpParser.DtypeContext,0)
 
         def ID(self):
             return self.getToken(kmmszarpParser.ID, 0)
@@ -1299,8 +1300,8 @@ class kmmszarpParser ( Parser ):
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def type_(self):
-            return self.getTypedRuleContext(kmmszarpParser.TypeContext,0)
+        def dtype(self):
+            return self.getTypedRuleContext(kmmszarpParser.DtypeContext,0)
 
         def ID(self):
             return self.getToken(kmmszarpParser.ID, 0)
@@ -1338,7 +1339,7 @@ class kmmszarpParser ( Parser ):
                 self.state = 227
                 self.match(kmmszarpParser.T__18)
                 self.state = 228
-                self.type_()
+                self.dtype()
                 self.state = 229
                 self.match(kmmszarpParser.ID)
                 pass
@@ -1349,7 +1350,7 @@ class kmmszarpParser ( Parser ):
                 self.state = 231
                 self.match(kmmszarpParser.T__18)
                 self.state = 232
-                self.type_()
+                self.dtype()
                 self.state = 233
                 self.match(kmmszarpParser.ID)
                 self.state = 234
@@ -1375,8 +1376,8 @@ class kmmszarpParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def type_(self):
-            return self.getTypedRuleContext(kmmszarpParser.TypeContext,0)
+        def dtype(self):
+            return self.getTypedRuleContext(kmmszarpParser.DtypeContext,0)
 
 
         def ID(self):
@@ -1422,7 +1423,7 @@ class kmmszarpParser ( Parser ):
             self.state = 239
             self.match(kmmszarpParser.T__21)
             self.state = 240
-            self.type_()
+            self.dtype()
             self.state = 241
             self.match(kmmszarpParser.ID)
             self.state = 242
@@ -1912,8 +1913,8 @@ class kmmszarpParser ( Parser ):
             return self.getTypedRuleContext(kmmszarpParser.ExpressionContext,0)
 
 
-        def type_(self):
-            return self.getTypedRuleContext(kmmszarpParser.TypeContext,0)
+        def dtype(self):
+            return self.getTypedRuleContext(kmmszarpParser.DtypeContext,0)
 
 
         def getRuleIndex(self):
@@ -1949,7 +1950,7 @@ class kmmszarpParser ( Parser ):
             self.state = 299
             self.match(kmmszarpParser.T__26)
             self.state = 300
-            self.type_()
+            self.dtype()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2517,7 +2518,7 @@ class kmmszarpParser ( Parser ):
         return localctx
 
 
-    class TypeContext(ParserRuleContext):
+    class DtypeContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2526,29 +2527,29 @@ class kmmszarpParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return kmmszarpParser.RULE_type
+            return kmmszarpParser.RULE_dtype
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterType" ):
-                listener.enterType(self)
+            if hasattr( listener, "enterDtype" ):
+                listener.enterDtype(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitType" ):
-                listener.exitType(self)
+            if hasattr( listener, "exitDtype" ):
+                listener.exitDtype(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitType" ):
-                return visitor.visitType(self)
+            if hasattr( visitor, "visitDtype" ):
+                return visitor.visitDtype(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
 
-    def type_(self):
+    def dtype(self):
 
-        localctx = kmmszarpParser.TypeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 44, self.RULE_type)
+        localctx = kmmszarpParser.DtypeContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 44, self.RULE_dtype)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)

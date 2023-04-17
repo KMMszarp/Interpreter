@@ -123,8 +123,8 @@ program
 statement
 loopFor
 loopWhile
-conditional
-ifelse
+conditionalStatement
+conditionalStatementElse
 functionDefinition
 parameterList
 parameter
@@ -141,7 +141,7 @@ argumentList
 cast
 expression
 primary
-type
+dtype
 
 
 atn:

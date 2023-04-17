@@ -29,13 +29,13 @@ class kmmszarpVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#conditional.
-    def visitConditional(self, ctx:kmmszarpParser.ConditionalContext):
+    # Visit a parse tree produced by kmmszarpParser#conditionalStatement.
+    def visitConditionalStatement(self, ctx:kmmszarpParser.ConditionalStatementContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#ifelse.
-    def visitIfelse(self, ctx:kmmszarpParser.IfelseContext):
+    # Visit a parse tree produced by kmmszarpParser#conditionalStatementElse.
+    def visitConditionalStatementElse(self, ctx:kmmszarpParser.ConditionalStatementElseContext):
         return self.visitChildren(ctx)
 
 
@@ -174,8 +174,8 @@ class kmmszarpVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by kmmszarpParser#type.
-    def visitType(self, ctx:kmmszarpParser.TypeContext):
+    # Visit a parse tree produced by kmmszarpParser#dtype.
+    def visitDtype(self, ctx:kmmszarpParser.DtypeContext):
         return self.visitChildren(ctx)
 
 

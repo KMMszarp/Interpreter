@@ -6,7 +6,7 @@ from kmmszarp.kmmszarpLexer import kmmszarpLexer
 from kmmszarp.kmmszarpParser import kmmszarpParser
 
 from visitor import Visitor
-from err import ErrorListener
+from err import ErrorListener, ExecutionError
 
 
 def main(argv):
@@ -39,7 +39,12 @@ def main(argv):
 
     # Visitor
     visitor = Visitor()
-    visitor.visitProgram(tree)
+
+    try:
+        visitor.visitProgram(tree)
+    except ExecutionError as e:
+        print(e)
+        sys.exit(3)
 
 
 if __name__ == '__main__':
