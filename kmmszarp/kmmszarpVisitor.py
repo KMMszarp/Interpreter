@@ -154,6 +154,11 @@ class kmmszarpVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by kmmszarpParser#UnaryMinus.
+    def visitUnaryMinus(self, ctx:kmmszarpParser.UnaryMinusContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by kmmszarpParser#CastExpression.
     def visitCastExpression(self, ctx:kmmszarpParser.CastExpressionContext):
         return self.visitChildren(ctx)

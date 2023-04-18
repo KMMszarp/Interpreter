@@ -269,6 +269,15 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by kmmszarpParser#UnaryMinus.
+    def enterUnaryMinus(self, ctx:kmmszarpParser.UnaryMinusContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#UnaryMinus.
+    def exitUnaryMinus(self, ctx:kmmszarpParser.UnaryMinusContext):
+        pass
+
+
     # Enter a parse tree produced by kmmszarpParser#CastExpression.
     def enterCastExpression(self, ctx:kmmszarpParser.CastExpressionContext):
         pass

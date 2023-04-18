@@ -61,6 +61,9 @@ class Variable:
         if self.dtype == Type.BOOL:
             return "prawda" if self.value else "kłamstwo"
 
+        if self.dtype == Type.INT and self.value < 0:
+            return f"minus {abs(self.value)}"
+
         return str(self.value)
 
 

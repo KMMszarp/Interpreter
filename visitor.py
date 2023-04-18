@@ -52,7 +52,14 @@ class Visitor(baseVisitor):
 
     def visitIntLiteral(self, ctx: kmmszarpParser.IntLiteralContext):
         raw_value = ctx.getText()
+        print(raw_value)
         return Variable("_tmp", Type.INT, int(raw_value))
+
+    def visitUnaryMinus(self, ctx:kmmszarpParser.UnaryMinusContext):
+        expr = self.visit(ctx.expression())
+        if expr.dtype != Type.INT:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można odjąć od wartości typu napis")
+        return Variable("_tmp", Type.INT, -expr.value)
 
     def visitStringLiteral(self, ctx: kmmszarpParser.StringLiteralContext):
         raw_value = ctx.getText().replace('początek cudzysłowu ', '', 1).replace(' koniec cudzysłowu', '', 1)
@@ -302,6 +309,3 @@ class Visitor(baseVisitor):
                 return Variable("_tmp", Type.BOOL, True if expression.value else False)
             else:
                 return expression
-
-
-
