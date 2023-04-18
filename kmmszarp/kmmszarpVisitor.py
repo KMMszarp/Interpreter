@@ -139,6 +139,11 @@ class kmmszarpVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by kmmszarpParser#Negation.
+    def visitNegation(self, ctx:kmmszarpParser.NegationContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by kmmszarpParser#PrimaryExpression.
     def visitPrimaryExpression(self, ctx:kmmszarpParser.PrimaryExpressionContext):
         return self.visitChildren(ctx)

@@ -15,6 +15,7 @@ class Visitor(baseVisitor):
             if stmt.variableDeclaration():
                 vd = stmt.variableDeclaration()
                 variable_type = None
+                variable_name = None
 
                 if vd.pureVariableDeclaration():
                     variable_type = vd.pureVariableDeclaration().dtype().getText()

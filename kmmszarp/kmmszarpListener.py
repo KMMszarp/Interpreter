@@ -242,6 +242,15 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by kmmszarpParser#Negation.
+    def enterNegation(self, ctx:kmmszarpParser.NegationContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#Negation.
+    def exitNegation(self, ctx:kmmszarpParser.NegationContext):
+        pass
+
+
     # Enter a parse tree produced by kmmszarpParser#PrimaryExpression.
     def enterPrimaryExpression(self, ctx:kmmszarpParser.PrimaryExpressionContext):
         pass
