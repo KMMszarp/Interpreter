@@ -248,3 +248,9 @@ class Visitor(baseVisitor):
 
     def visitParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
         return self.visit(ctx.expression())
+
+    def visitNegation(self, ctx:kmmszarpParser.NegationContext):
+        expression: Variable = self.visit(ctx.expression())
+        if expression.dtype != Type.BOOL:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Negacja musi być typu prawdziwość")
+        return Variable("_tmp", Type.BOOL, not expression.value)
