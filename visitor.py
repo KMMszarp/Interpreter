@@ -279,13 +279,9 @@ class Visitor(baseVisitor):
             if expression.dtype == Type.INT:
                 return expression
             elif expression.dtype == Type.BOOL:
-                self.data.remove_variable(name)
-                self.data.create_and_initialize_variable(name, Type.INT, 1 if value else 0)
                 return Variable("_tmp", Type.INT, 1 if value else 0)
             else:
                 try:
-                    self.data.remove_variable(name)
-                    self.data.create_and_initialize_variable(name, Type.INT, int(value))
                     return Variable("_tmp", Type.INT, int(value))
                 except ValueError:
                     raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można rzutować typu napis na typ liczba")
@@ -294,22 +290,19 @@ class Visitor(baseVisitor):
             if expression.dtype == Type.STRING:
                 return expression
             elif expression.dtype == Type.INT:
-                self.data.remove_variable(name)
-                self.data.create_and_initialize_variable(name, Type.STRING, str(value))
-                return Variable("_tmp", Type.STRING, str(expression.value))
+                if expression.value < 0:
+                    val = "minus " + str(abs(expression.value))
+                else:
+                    val = str(abs(expression.value))
+                return Variable("_tmp", Type.STRING, val)
             else:
-                self.data.remove_variable(name)
-                self.data.create_and_initialize_variable(name, Type.STRING, "prawda" if value else "fałsz")
                 return Variable("_tmp", Type.STRING, "prawda" if expression.value else "fałsz")
 
         else:
             if expression.dtype == Type.INT:
-                self.data.remove_variable(name)
-                self.data.create_and_initialize_variable(name, Type.BOOL, True if value else False)
                 return Variable("_tmp", Type.BOOL, True if expression.value else False)
             elif expression.dtype == Type.STRING:
-                self.data.remove_variable(name)
-                self.data.create_and_initialize_variable(name, Type.BOOL, True if value else False)
+
                 return Variable("_tmp", Type.BOOL, True if expression.value else False)
             else:
                 return expression
