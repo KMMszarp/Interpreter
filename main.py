@@ -43,7 +43,7 @@ def main(argv):
     try:
         visitor.visitProgram(tree)
     except ExecutionError as e:
-        print(e)
+        print(e, file=sys.stderr)
         sys.exit(3)
 
 
