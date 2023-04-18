@@ -52,7 +52,7 @@ class Visitor(baseVisitor):
 
     def visitIntLiteral(self, ctx: kmmszarpParser.IntLiteralContext):
         raw_value = ctx.getText()
-        print(raw_value)
+        # print(raw_value)
         return Variable("_tmp", Type.INT, int(raw_value))
 
     def visitUnaryMinus(self, ctx:kmmszarpParser.UnaryMinusContext):
@@ -286,7 +286,11 @@ class Visitor(baseVisitor):
             if expression.dtype == Type.STRING:
                 return expression
             elif expression.dtype == Type.INT:
-                return Variable("_tmp", Type.STRING, str(expression.value))
+                if expression.value < 0:
+                    val = "minus " + str(abs(expression.value))
+                else:
+                    val = str(abs(expression.value))
+                return Variable("_tmp", Type.STRING, val)
             else:
                 return Variable("_tmp", Type.STRING, "prawda" if expression.value else "fałsz")
 
