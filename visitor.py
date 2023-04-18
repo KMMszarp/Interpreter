@@ -206,6 +206,28 @@ class Visitor(baseVisitor):
             result = raw_left != raw_right
 
         return ParsedExpression(Type.BOOL, result)
+    
+        def visitLogicAnd(self, ctx: kmmszarpParser.LogicAndContext):
+        left = self.visit(ctx.expression(0))
+        right = self.visit(ctx.expression(1))
+
+        if left.dtype != Type.BOOL or right.dtype != Type.BOOL:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Operacja logiczna AND wymaga typu prawdziwość")
+
+        result = left.value and right.value
+
+        return ParsedExpression(Type.BOOL, result)
+
+    def visitLogicOr(self, ctx: kmmszarpParser.LogicOrContext):
+        left = self.visit(ctx.expression(0))
+        right = self.visit(ctx.expression(1))
+
+        if left.dtype != Type.BOOL or right.dtype != Type.BOOL:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Operacja logiczna OR wymaga typu prawdziwość")
+
+        result = left.value or right.value
+
+        return ParsedExpression(Type.BOOL, result)
 
     def visitConditionalStatement(self, ctx: kmmszarpParser.ConditionalStatementContext) -> bool:
         condition_result: VariableLike = self.visit(ctx.expression())
