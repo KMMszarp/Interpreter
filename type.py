@@ -2,6 +2,7 @@ from enum import Enum
 from dataclasses import dataclass
 from err import ExecutionError, VariableRedeclarationError, VariableNotDeclaredError, VariableNotInitializedError
 
+
 class Type(Enum):
     INT = 1
     STRING = 2
@@ -65,7 +66,7 @@ class Variable:
 
 class Data:
     def __init__(self):
-        self.variables = {}
+        self.variables: dict[str, Variable] = {}
 
     def create_variable(self, name: str, dtype: Type):
         if name in self.variables:
