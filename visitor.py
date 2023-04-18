@@ -52,7 +52,6 @@ class Visitor(baseVisitor):
 
     def visitIntLiteral(self, ctx: kmmszarpParser.IntLiteralContext):
         raw_value = ctx.getText()
-        # print(raw_value)
         return Variable("_tmp", Type.INT, int(raw_value))
 
     def visitUnaryMinus(self, ctx:kmmszarpParser.UnaryMinusContext):
