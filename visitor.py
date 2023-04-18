@@ -13,8 +13,15 @@ class Visitor(baseVisitor):
         # Get all top level variable declarations
         for stmt in ctx.statement():
             if stmt.variableDeclaration():
-                variable_type = stmt.variableDeclaration().dtype().getText()
-                variable_name = stmt.variableDeclaration().ID().getText()
+                vd = stmt.variableDeclaration()
+                variable_type = None
+
+                if vd.pureVariableDeclaration():
+                    variable_type = vd.pureVariableDeclaration().dtype().getText()
+                    variable_name = vd.pureVariableDeclaration().ID().getText()
+                elif vd.variableDeclarationWithAssignment():
+                    variable_type = vd.variableDeclarationWithAssignment().dtype().getText()
+                    variable_name = vd.variableDeclarationWithAssignment().ID().getText()
 
                 if variable_name in self.data.variables:
                     raise ExecutionError(ctx.start.line, ctx.start.column,

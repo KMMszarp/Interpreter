@@ -116,6 +116,15 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by kmmszarpParser#variableDeclaration.
+    def enterVariableDeclaration(self, ctx:kmmszarpParser.VariableDeclarationContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#variableDeclaration.
+    def exitVariableDeclaration(self, ctx:kmmszarpParser.VariableDeclarationContext):
+        pass
+
+
     # Enter a parse tree produced by kmmszarpParser#arrayDeclaration.
     def enterArrayDeclaration(self, ctx:kmmszarpParser.ArrayDeclarationContext):
         pass

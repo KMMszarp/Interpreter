@@ -10,121 +10,124 @@ else:
 
 def serializedATN():
     return [
-        4,1,57,324,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,57,333,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
-        7,20,2,21,7,21,2,22,7,22,1,0,1,0,3,0,49,8,0,1,0,5,0,52,8,0,10,0,
-        12,0,55,9,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,68,8,
-        1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,5,2,79,8,2,10,2,12,2,82,9,
-        2,1,2,1,2,1,2,5,2,87,8,2,10,2,12,2,90,9,2,1,2,1,2,1,3,1,3,1,3,1,
-        3,1,3,5,3,99,8,3,10,3,12,3,102,9,3,1,3,1,3,1,3,5,3,107,8,3,10,3,
-        12,3,110,9,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,5,4,119,8,4,10,4,12,4,122,
-        9,4,1,4,1,4,1,4,5,4,127,8,4,10,4,12,4,130,9,4,1,4,1,4,1,5,1,5,5,
-        5,136,8,5,10,5,12,5,139,9,5,1,5,1,5,1,5,5,5,144,8,5,10,5,12,5,147,
-        9,5,1,5,1,5,1,5,5,5,152,8,5,10,5,12,5,155,9,5,1,5,1,5,1,6,1,6,1,
-        6,1,6,3,6,163,8,6,1,6,1,6,1,6,1,6,5,6,169,8,6,10,6,12,6,172,9,6,
-        1,6,1,6,1,6,5,6,177,8,6,10,6,12,6,180,9,6,1,6,3,6,183,8,6,1,6,5,
-        6,186,8,6,10,6,12,6,189,9,6,1,6,1,6,1,7,1,7,1,7,5,7,196,8,7,10,7,
-        12,7,199,9,7,3,7,201,8,7,1,8,1,8,1,8,1,8,1,9,1,9,1,9,1,10,1,10,1,
-        10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,3,10,220,8,10,1,11,1,11,1,
-        11,1,11,1,11,1,11,1,11,5,11,229,8,11,10,11,12,11,232,9,11,1,11,1,
-        11,3,11,236,8,11,1,12,1,12,1,13,1,13,3,13,242,8,13,1,14,1,14,1,14,
-        1,14,1,14,1,15,1,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,16,1,16,
-        1,17,1,17,1,17,1,17,1,18,1,18,3,18,266,8,18,1,18,1,18,1,18,3,18,
-        271,8,18,5,18,273,8,18,10,18,12,18,276,9,18,3,18,278,8,18,1,19,1,
-        19,1,19,1,19,1,19,1,20,1,20,1,20,1,20,1,20,1,20,3,20,291,8,20,1,
-        20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,
-        20,1,20,1,20,1,20,1,20,5,20,311,8,20,10,20,12,20,314,9,20,1,21,1,
-        21,1,21,1,21,3,21,320,8,21,1,22,1,22,1,22,1,187,1,40,23,0,2,4,6,
-        8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,0,5,1,0,
-        31,33,1,0,34,35,1,0,36,39,1,0,40,41,1,0,44,47,347,0,53,1,0,0,0,2,
-        67,1,0,0,0,4,69,1,0,0,0,6,93,1,0,0,0,8,113,1,0,0,0,10,133,1,0,0,
-        0,12,158,1,0,0,0,14,200,1,0,0,0,16,202,1,0,0,0,18,206,1,0,0,0,20,
-        219,1,0,0,0,22,221,1,0,0,0,24,237,1,0,0,0,26,241,1,0,0,0,28,243,
-        1,0,0,0,30,248,1,0,0,0,32,252,1,0,0,0,34,259,1,0,0,0,36,277,1,0,
-        0,0,38,279,1,0,0,0,40,290,1,0,0,0,42,319,1,0,0,0,44,321,1,0,0,0,
-        46,48,3,2,1,0,47,49,5,57,0,0,48,47,1,0,0,0,48,49,1,0,0,0,49,52,1,
-        0,0,0,50,52,5,57,0,0,51,46,1,0,0,0,51,50,1,0,0,0,52,55,1,0,0,0,53,
-        51,1,0,0,0,53,54,1,0,0,0,54,1,1,0,0,0,55,53,1,0,0,0,56,68,3,4,2,
-        0,57,68,3,6,3,0,58,68,3,8,4,0,59,68,3,10,5,0,60,68,3,12,6,0,61,68,
-        3,20,10,0,62,68,3,22,11,0,63,68,3,30,15,0,64,68,3,32,16,0,65,68,
-        3,34,17,0,66,68,3,38,19,0,67,56,1,0,0,0,67,57,1,0,0,0,67,58,1,0,
-        0,0,67,59,1,0,0,0,67,60,1,0,0,0,67,61,1,0,0,0,67,62,1,0,0,0,67,63,
-        1,0,0,0,67,64,1,0,0,0,67,65,1,0,0,0,67,66,1,0,0,0,68,3,1,0,0,0,69,
-        70,5,1,0,0,70,71,5,2,0,0,71,72,3,20,10,0,72,73,5,3,0,0,73,74,3,40,
-        20,0,74,75,5,4,0,0,75,76,3,40,20,0,76,80,5,5,0,0,77,79,5,57,0,0,
-        78,77,1,0,0,0,79,82,1,0,0,0,80,78,1,0,0,0,80,81,1,0,0,0,81,88,1,
-        0,0,0,82,80,1,0,0,0,83,84,3,2,1,0,84,85,5,57,0,0,85,87,1,0,0,0,86,
-        83,1,0,0,0,87,90,1,0,0,0,88,86,1,0,0,0,88,89,1,0,0,0,89,91,1,0,0,
-        0,90,88,1,0,0,0,91,92,5,6,0,0,92,5,1,0,0,0,93,94,5,1,0,0,94,95,5,
-        7,0,0,95,96,3,40,20,0,96,100,5,5,0,0,97,99,5,57,0,0,98,97,1,0,0,
-        0,99,102,1,0,0,0,100,98,1,0,0,0,100,101,1,0,0,0,101,108,1,0,0,0,
-        102,100,1,0,0,0,103,104,3,2,1,0,104,105,5,57,0,0,105,107,1,0,0,0,
-        106,103,1,0,0,0,107,110,1,0,0,0,108,106,1,0,0,0,108,109,1,0,0,0,
-        109,111,1,0,0,0,110,108,1,0,0,0,111,112,5,6,0,0,112,7,1,0,0,0,113,
-        114,5,8,0,0,114,115,3,40,20,0,115,116,5,9,0,0,116,120,5,10,0,0,117,
-        119,5,57,0,0,118,117,1,0,0,0,119,122,1,0,0,0,120,118,1,0,0,0,120,
-        121,1,0,0,0,121,128,1,0,0,0,122,120,1,0,0,0,123,124,3,2,1,0,124,
-        125,5,57,0,0,125,127,1,0,0,0,126,123,1,0,0,0,127,130,1,0,0,0,128,
-        126,1,0,0,0,128,129,1,0,0,0,129,131,1,0,0,0,130,128,1,0,0,0,131,
-        132,5,11,0,0,132,9,1,0,0,0,133,137,3,8,4,0,134,136,5,57,0,0,135,
-        134,1,0,0,0,136,139,1,0,0,0,137,135,1,0,0,0,137,138,1,0,0,0,138,
-        140,1,0,0,0,139,137,1,0,0,0,140,141,5,12,0,0,141,145,5,10,0,0,142,
-        144,5,57,0,0,143,142,1,0,0,0,144,147,1,0,0,0,145,143,1,0,0,0,145,
-        146,1,0,0,0,146,153,1,0,0,0,147,145,1,0,0,0,148,149,3,2,1,0,149,
-        150,5,57,0,0,150,152,1,0,0,0,151,148,1,0,0,0,152,155,1,0,0,0,153,
-        151,1,0,0,0,153,154,1,0,0,0,154,156,1,0,0,0,155,153,1,0,0,0,156,
-        157,5,11,0,0,157,11,1,0,0,0,158,159,5,13,0,0,159,162,5,49,0,0,160,
-        161,5,14,0,0,161,163,3,14,7,0,162,160,1,0,0,0,162,163,1,0,0,0,163,
-        164,1,0,0,0,164,165,5,15,0,0,165,166,3,44,22,0,166,170,5,16,0,0,
-        167,169,5,57,0,0,168,167,1,0,0,0,169,172,1,0,0,0,170,168,1,0,0,0,
-        170,171,1,0,0,0,171,178,1,0,0,0,172,170,1,0,0,0,173,174,3,2,1,0,
-        174,175,5,57,0,0,175,177,1,0,0,0,176,173,1,0,0,0,177,180,1,0,0,0,
-        178,176,1,0,0,0,178,179,1,0,0,0,179,182,1,0,0,0,180,178,1,0,0,0,
-        181,183,3,18,9,0,182,181,1,0,0,0,182,183,1,0,0,0,183,187,1,0,0,0,
-        184,186,5,57,0,0,185,184,1,0,0,0,186,189,1,0,0,0,187,188,1,0,0,0,
-        187,185,1,0,0,0,188,190,1,0,0,0,189,187,1,0,0,0,190,191,5,17,0,0,
-        191,13,1,0,0,0,192,197,3,16,8,0,193,194,5,18,0,0,194,196,3,16,8,
-        0,195,193,1,0,0,0,196,199,1,0,0,0,197,195,1,0,0,0,197,198,1,0,0,
-        0,198,201,1,0,0,0,199,197,1,0,0,0,200,192,1,0,0,0,200,201,1,0,0,
-        0,201,15,1,0,0,0,202,203,5,19,0,0,203,204,3,44,22,0,204,205,5,49,
-        0,0,205,17,1,0,0,0,206,207,5,20,0,0,207,208,3,40,20,0,208,19,1,0,
-        0,0,209,210,5,19,0,0,210,211,3,44,22,0,211,212,5,49,0,0,212,220,
-        1,0,0,0,213,214,5,19,0,0,214,215,3,44,22,0,215,216,5,49,0,0,216,
-        217,5,21,0,0,217,218,3,40,20,0,218,220,1,0,0,0,219,209,1,0,0,0,219,
-        213,1,0,0,0,220,21,1,0,0,0,221,222,5,22,0,0,222,223,3,44,22,0,223,
-        224,5,49,0,0,224,225,5,21,0,0,225,230,3,24,12,0,226,227,5,18,0,0,
-        227,229,3,24,12,0,228,226,1,0,0,0,229,232,1,0,0,0,230,228,1,0,0,
-        0,230,231,1,0,0,0,231,235,1,0,0,0,232,230,1,0,0,0,233,234,5,23,0,
-        0,234,236,5,51,0,0,235,233,1,0,0,0,235,236,1,0,0,0,236,23,1,0,0,
-        0,237,238,3,40,20,0,238,25,1,0,0,0,239,242,5,49,0,0,240,242,3,28,
-        14,0,241,239,1,0,0,0,241,240,1,0,0,0,242,27,1,0,0,0,243,244,5,24,
-        0,0,244,245,3,40,20,0,245,246,5,25,0,0,246,247,3,40,20,0,247,29,
-        1,0,0,0,248,249,5,49,0,0,249,250,5,21,0,0,250,251,3,40,20,0,251,
-        31,1,0,0,0,252,253,5,26,0,0,253,254,3,40,20,0,254,255,5,27,0,0,255,
-        256,3,40,20,0,256,257,5,28,0,0,257,258,3,40,20,0,258,33,1,0,0,0,
-        259,260,5,29,0,0,260,261,5,49,0,0,261,262,3,36,18,0,262,35,1,0,0,
-        0,263,266,3,20,10,0,264,266,3,40,20,0,265,263,1,0,0,0,265,264,1,
-        0,0,0,266,274,1,0,0,0,267,270,5,18,0,0,268,271,3,20,10,0,269,271,
-        3,40,20,0,270,268,1,0,0,0,270,269,1,0,0,0,271,273,1,0,0,0,272,267,
-        1,0,0,0,273,276,1,0,0,0,274,272,1,0,0,0,274,275,1,0,0,0,275,278,
-        1,0,0,0,276,274,1,0,0,0,277,265,1,0,0,0,277,278,1,0,0,0,278,37,1,
-        0,0,0,279,280,5,30,0,0,280,281,3,40,20,0,281,282,5,27,0,0,282,283,
-        3,44,22,0,283,39,1,0,0,0,284,285,6,20,-1,0,285,286,5,54,0,0,286,
-        287,3,40,20,0,287,288,5,55,0,0,288,291,1,0,0,0,289,291,3,42,21,0,
-        290,284,1,0,0,0,290,289,1,0,0,0,291,312,1,0,0,0,292,293,10,7,0,0,
-        293,294,7,0,0,0,294,311,3,40,20,8,295,296,10,6,0,0,296,297,7,1,0,
-        0,297,311,3,40,20,7,298,299,10,5,0,0,299,300,7,2,0,0,300,311,3,40,
-        20,6,301,302,10,4,0,0,302,303,7,3,0,0,303,311,3,40,20,5,304,305,
-        10,3,0,0,305,306,5,42,0,0,306,311,3,40,20,4,307,308,10,2,0,0,308,
-        309,5,43,0,0,309,311,3,40,20,3,310,292,1,0,0,0,310,295,1,0,0,0,310,
-        298,1,0,0,0,310,301,1,0,0,0,310,304,1,0,0,0,310,307,1,0,0,0,311,
-        314,1,0,0,0,312,310,1,0,0,0,312,313,1,0,0,0,313,41,1,0,0,0,314,312,
-        1,0,0,0,315,320,5,50,0,0,316,320,5,52,0,0,317,320,5,53,0,0,318,320,
-        3,26,13,0,319,315,1,0,0,0,319,316,1,0,0,0,319,317,1,0,0,0,319,318,
-        1,0,0,0,320,43,1,0,0,0,321,322,7,4,0,0,322,45,1,0,0,0,32,48,51,53,
-        67,80,88,100,108,120,128,137,145,153,162,170,178,182,187,197,200,
-        219,230,235,241,265,270,274,277,290,310,312,319
+        7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,1,0,1,0,3,0,53,8,0,
+        1,0,5,0,56,8,0,10,0,12,0,59,9,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,3,1,72,8,1,1,2,1,2,1,2,1,2,3,2,78,8,2,1,2,1,2,1,2,1,
+        2,1,2,1,2,5,2,86,8,2,10,2,12,2,89,9,2,1,2,1,2,1,2,5,2,94,8,2,10,
+        2,12,2,97,9,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,5,3,106,8,3,10,3,12,3,
+        109,9,3,1,3,1,3,1,3,5,3,114,8,3,10,3,12,3,117,9,3,1,3,1,3,1,4,1,
+        4,1,4,1,4,1,4,5,4,126,8,4,10,4,12,4,129,9,4,1,4,1,4,1,4,5,4,134,
+        8,4,10,4,12,4,137,9,4,1,4,1,4,1,5,1,5,5,5,143,8,5,10,5,12,5,146,
+        9,5,1,5,1,5,1,5,5,5,151,8,5,10,5,12,5,154,9,5,1,5,1,5,1,5,5,5,159,
+        8,5,10,5,12,5,162,9,5,1,5,1,5,1,6,1,6,1,6,1,6,3,6,170,8,6,1,6,1,
+        6,1,6,1,6,5,6,176,8,6,10,6,12,6,179,9,6,1,6,1,6,1,6,5,6,184,8,6,
+        10,6,12,6,187,9,6,1,6,3,6,190,8,6,1,6,5,6,193,8,6,10,6,12,6,196,
+        9,6,1,6,1,6,1,7,1,7,1,7,5,7,203,8,7,10,7,12,7,206,9,7,3,7,208,8,
+        7,1,8,1,8,1,8,1,8,1,9,1,9,1,9,1,10,1,10,1,10,1,10,1,11,1,11,1,11,
+        1,11,1,11,1,11,1,12,1,12,3,12,229,8,12,1,13,1,13,1,13,1,13,1,13,
+        1,13,1,13,5,13,238,8,13,10,13,12,13,241,9,13,1,13,1,13,3,13,245,
+        8,13,1,14,1,14,1,15,1,15,3,15,251,8,15,1,16,1,16,1,16,1,16,1,16,
+        1,17,1,17,1,17,1,17,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,19,1,19,
+        1,19,1,19,1,20,1,20,3,20,275,8,20,1,20,1,20,1,20,3,20,280,8,20,5,
+        20,282,8,20,10,20,12,20,285,9,20,3,20,287,8,20,1,21,1,21,1,21,1,
+        21,1,21,1,22,1,22,1,22,1,22,1,22,1,22,3,22,300,8,22,1,22,1,22,1,
+        22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,
+        22,1,22,1,22,5,22,320,8,22,10,22,12,22,323,9,22,1,23,1,23,1,23,1,
+        23,3,23,329,8,23,1,24,1,24,1,24,1,194,1,44,25,0,2,4,6,8,10,12,14,
+        16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,0,5,1,0,31,33,
+        1,0,34,35,1,0,36,39,1,0,40,41,1,0,44,47,355,0,57,1,0,0,0,2,71,1,
+        0,0,0,4,73,1,0,0,0,6,100,1,0,0,0,8,120,1,0,0,0,10,140,1,0,0,0,12,
+        165,1,0,0,0,14,207,1,0,0,0,16,209,1,0,0,0,18,213,1,0,0,0,20,216,
+        1,0,0,0,22,220,1,0,0,0,24,228,1,0,0,0,26,230,1,0,0,0,28,246,1,0,
+        0,0,30,250,1,0,0,0,32,252,1,0,0,0,34,257,1,0,0,0,36,261,1,0,0,0,
+        38,268,1,0,0,0,40,286,1,0,0,0,42,288,1,0,0,0,44,299,1,0,0,0,46,328,
+        1,0,0,0,48,330,1,0,0,0,50,52,3,2,1,0,51,53,5,57,0,0,52,51,1,0,0,
+        0,52,53,1,0,0,0,53,56,1,0,0,0,54,56,5,57,0,0,55,50,1,0,0,0,55,54,
+        1,0,0,0,56,59,1,0,0,0,57,55,1,0,0,0,57,58,1,0,0,0,58,1,1,0,0,0,59,
+        57,1,0,0,0,60,72,3,4,2,0,61,72,3,6,3,0,62,72,3,8,4,0,63,72,3,10,
+        5,0,64,72,3,12,6,0,65,72,3,24,12,0,66,72,3,26,13,0,67,72,3,34,17,
+        0,68,72,3,36,18,0,69,72,3,38,19,0,70,72,3,42,21,0,71,60,1,0,0,0,
+        71,61,1,0,0,0,71,62,1,0,0,0,71,63,1,0,0,0,71,64,1,0,0,0,71,65,1,
+        0,0,0,71,66,1,0,0,0,71,67,1,0,0,0,71,68,1,0,0,0,71,69,1,0,0,0,71,
+        70,1,0,0,0,72,3,1,0,0,0,73,74,5,1,0,0,74,77,5,2,0,0,75,78,3,20,10,
+        0,76,78,5,49,0,0,77,75,1,0,0,0,77,76,1,0,0,0,78,79,1,0,0,0,79,80,
+        5,3,0,0,80,81,3,44,22,0,81,82,5,4,0,0,82,83,3,44,22,0,83,87,5,5,
+        0,0,84,86,5,57,0,0,85,84,1,0,0,0,86,89,1,0,0,0,87,85,1,0,0,0,87,
+        88,1,0,0,0,88,95,1,0,0,0,89,87,1,0,0,0,90,91,3,2,1,0,91,92,5,57,
+        0,0,92,94,1,0,0,0,93,90,1,0,0,0,94,97,1,0,0,0,95,93,1,0,0,0,95,96,
+        1,0,0,0,96,98,1,0,0,0,97,95,1,0,0,0,98,99,5,6,0,0,99,5,1,0,0,0,100,
+        101,5,1,0,0,101,102,5,7,0,0,102,103,3,44,22,0,103,107,5,5,0,0,104,
+        106,5,57,0,0,105,104,1,0,0,0,106,109,1,0,0,0,107,105,1,0,0,0,107,
+        108,1,0,0,0,108,115,1,0,0,0,109,107,1,0,0,0,110,111,3,2,1,0,111,
+        112,5,57,0,0,112,114,1,0,0,0,113,110,1,0,0,0,114,117,1,0,0,0,115,
+        113,1,0,0,0,115,116,1,0,0,0,116,118,1,0,0,0,117,115,1,0,0,0,118,
+        119,5,6,0,0,119,7,1,0,0,0,120,121,5,8,0,0,121,122,3,44,22,0,122,
+        123,5,9,0,0,123,127,5,10,0,0,124,126,5,57,0,0,125,124,1,0,0,0,126,
+        129,1,0,0,0,127,125,1,0,0,0,127,128,1,0,0,0,128,135,1,0,0,0,129,
+        127,1,0,0,0,130,131,3,2,1,0,131,132,5,57,0,0,132,134,1,0,0,0,133,
+        130,1,0,0,0,134,137,1,0,0,0,135,133,1,0,0,0,135,136,1,0,0,0,136,
+        138,1,0,0,0,137,135,1,0,0,0,138,139,5,11,0,0,139,9,1,0,0,0,140,144,
+        3,8,4,0,141,143,5,57,0,0,142,141,1,0,0,0,143,146,1,0,0,0,144,142,
+        1,0,0,0,144,145,1,0,0,0,145,147,1,0,0,0,146,144,1,0,0,0,147,148,
+        5,12,0,0,148,152,5,10,0,0,149,151,5,57,0,0,150,149,1,0,0,0,151,154,
+        1,0,0,0,152,150,1,0,0,0,152,153,1,0,0,0,153,160,1,0,0,0,154,152,
+        1,0,0,0,155,156,3,2,1,0,156,157,5,57,0,0,157,159,1,0,0,0,158,155,
+        1,0,0,0,159,162,1,0,0,0,160,158,1,0,0,0,160,161,1,0,0,0,161,163,
+        1,0,0,0,162,160,1,0,0,0,163,164,5,11,0,0,164,11,1,0,0,0,165,166,
+        5,13,0,0,166,169,5,49,0,0,167,168,5,14,0,0,168,170,3,14,7,0,169,
+        167,1,0,0,0,169,170,1,0,0,0,170,171,1,0,0,0,171,172,5,15,0,0,172,
+        173,3,48,24,0,173,177,5,16,0,0,174,176,5,57,0,0,175,174,1,0,0,0,
+        176,179,1,0,0,0,177,175,1,0,0,0,177,178,1,0,0,0,178,185,1,0,0,0,
+        179,177,1,0,0,0,180,181,3,2,1,0,181,182,5,57,0,0,182,184,1,0,0,0,
+        183,180,1,0,0,0,184,187,1,0,0,0,185,183,1,0,0,0,185,186,1,0,0,0,
+        186,189,1,0,0,0,187,185,1,0,0,0,188,190,3,18,9,0,189,188,1,0,0,0,
+        189,190,1,0,0,0,190,194,1,0,0,0,191,193,5,57,0,0,192,191,1,0,0,0,
+        193,196,1,0,0,0,194,195,1,0,0,0,194,192,1,0,0,0,195,197,1,0,0,0,
+        196,194,1,0,0,0,197,198,5,17,0,0,198,13,1,0,0,0,199,204,3,16,8,0,
+        200,201,5,18,0,0,201,203,3,16,8,0,202,200,1,0,0,0,203,206,1,0,0,
+        0,204,202,1,0,0,0,204,205,1,0,0,0,205,208,1,0,0,0,206,204,1,0,0,
+        0,207,199,1,0,0,0,207,208,1,0,0,0,208,15,1,0,0,0,209,210,5,19,0,
+        0,210,211,3,48,24,0,211,212,5,49,0,0,212,17,1,0,0,0,213,214,5,20,
+        0,0,214,215,3,44,22,0,215,19,1,0,0,0,216,217,5,19,0,0,217,218,3,
+        48,24,0,218,219,5,49,0,0,219,21,1,0,0,0,220,221,5,19,0,0,221,222,
+        3,48,24,0,222,223,5,49,0,0,223,224,5,21,0,0,224,225,3,44,22,0,225,
+        23,1,0,0,0,226,229,3,20,10,0,227,229,3,22,11,0,228,226,1,0,0,0,228,
+        227,1,0,0,0,229,25,1,0,0,0,230,231,5,22,0,0,231,232,3,48,24,0,232,
+        233,5,49,0,0,233,234,5,21,0,0,234,239,3,28,14,0,235,236,5,18,0,0,
+        236,238,3,28,14,0,237,235,1,0,0,0,238,241,1,0,0,0,239,237,1,0,0,
+        0,239,240,1,0,0,0,240,244,1,0,0,0,241,239,1,0,0,0,242,243,5,23,0,
+        0,243,245,5,51,0,0,244,242,1,0,0,0,244,245,1,0,0,0,245,27,1,0,0,
+        0,246,247,3,44,22,0,247,29,1,0,0,0,248,251,5,49,0,0,249,251,3,32,
+        16,0,250,248,1,0,0,0,250,249,1,0,0,0,251,31,1,0,0,0,252,253,5,24,
+        0,0,253,254,3,44,22,0,254,255,5,25,0,0,255,256,3,44,22,0,256,33,
+        1,0,0,0,257,258,5,49,0,0,258,259,5,21,0,0,259,260,3,44,22,0,260,
+        35,1,0,0,0,261,262,5,26,0,0,262,263,3,44,22,0,263,264,5,27,0,0,264,
+        265,3,44,22,0,265,266,5,28,0,0,266,267,3,44,22,0,267,37,1,0,0,0,
+        268,269,5,29,0,0,269,270,5,49,0,0,270,271,3,40,20,0,271,39,1,0,0,
+        0,272,275,3,24,12,0,273,275,3,44,22,0,274,272,1,0,0,0,274,273,1,
+        0,0,0,275,283,1,0,0,0,276,279,5,18,0,0,277,280,3,24,12,0,278,280,
+        3,44,22,0,279,277,1,0,0,0,279,278,1,0,0,0,280,282,1,0,0,0,281,276,
+        1,0,0,0,282,285,1,0,0,0,283,281,1,0,0,0,283,284,1,0,0,0,284,287,
+        1,0,0,0,285,283,1,0,0,0,286,274,1,0,0,0,286,287,1,0,0,0,287,41,1,
+        0,0,0,288,289,5,30,0,0,289,290,3,44,22,0,290,291,5,27,0,0,291,292,
+        3,48,24,0,292,43,1,0,0,0,293,294,6,22,-1,0,294,295,5,54,0,0,295,
+        296,3,44,22,0,296,297,5,55,0,0,297,300,1,0,0,0,298,300,3,46,23,0,
+        299,293,1,0,0,0,299,298,1,0,0,0,300,321,1,0,0,0,301,302,10,7,0,0,
+        302,303,7,0,0,0,303,320,3,44,22,8,304,305,10,6,0,0,305,306,7,1,0,
+        0,306,320,3,44,22,7,307,308,10,5,0,0,308,309,7,2,0,0,309,320,3,44,
+        22,6,310,311,10,4,0,0,311,312,7,3,0,0,312,320,3,44,22,5,313,314,
+        10,3,0,0,314,315,5,42,0,0,315,320,3,44,22,4,316,317,10,2,0,0,317,
+        318,5,43,0,0,318,320,3,44,22,3,319,301,1,0,0,0,319,304,1,0,0,0,319,
+        307,1,0,0,0,319,310,1,0,0,0,319,313,1,0,0,0,319,316,1,0,0,0,320,
+        323,1,0,0,0,321,319,1,0,0,0,321,322,1,0,0,0,322,45,1,0,0,0,323,321,
+        1,0,0,0,324,329,5,50,0,0,325,329,5,52,0,0,326,329,5,53,0,0,327,329,
+        3,30,15,0,328,324,1,0,0,0,328,325,1,0,0,0,328,326,1,0,0,0,328,327,
+        1,0,0,0,329,47,1,0,0,0,330,331,7,4,0,0,331,49,1,0,0,0,33,52,55,57,
+        71,77,87,95,107,115,127,135,144,152,160,169,177,185,189,194,204,
+        207,228,239,244,250,274,279,283,286,299,319,321,328
     ]
 
 class kmmszarpParser ( Parser ):
@@ -181,23 +184,26 @@ class kmmszarpParser ( Parser ):
     RULE_parameterList = 7
     RULE_parameter = 8
     RULE_returnStatement = 9
-    RULE_variableDeclaration = 10
-    RULE_arrayDeclaration = 11
-    RULE_arrayValue = 12
-    RULE_variableReference = 13
-    RULE_arrayAccess = 14
-    RULE_variableAssignment = 15
-    RULE_arrayAssignment = 16
-    RULE_functionCall = 17
-    RULE_argumentList = 18
-    RULE_cast = 19
-    RULE_expression = 20
-    RULE_primary = 21
-    RULE_dtype = 22
+    RULE_pureVariableDeclaration = 10
+    RULE_variableDeclarationWithAssignment = 11
+    RULE_variableDeclaration = 12
+    RULE_arrayDeclaration = 13
+    RULE_arrayValue = 14
+    RULE_variableReference = 15
+    RULE_arrayAccess = 16
+    RULE_variableAssignment = 17
+    RULE_arrayAssignment = 18
+    RULE_functionCall = 19
+    RULE_argumentList = 20
+    RULE_cast = 21
+    RULE_expression = 22
+    RULE_primary = 23
+    RULE_dtype = 24
 
     ruleNames =  [ "program", "statement", "loopFor", "loopWhile", "conditionalStatement", 
                    "conditionalStatementElse", "functionDefinition", "parameterList", 
-                   "parameter", "returnStatement", "variableDeclaration", 
+                   "parameter", "returnStatement", "pureVariableDeclaration", 
+                   "variableDeclarationWithAssignment", "variableDeclaration", 
                    "arrayDeclaration", "arrayValue", "variableReference", 
                    "arrayAccess", "variableAssignment", "arrayAssignment", 
                    "functionCall", "argumentList", "cast", "expression", 
@@ -318,33 +324,33 @@ class kmmszarpParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 53
+            self.state = 57
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 144678139711725826) != 0):
-                self.state = 51
+                self.state = 55
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [1, 8, 13, 19, 22, 26, 29, 30, 49]:
-                    self.state = 46
+                    self.state = 50
                     self.statement()
-                    self.state = 48
+                    self.state = 52
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,0,self._ctx)
                     if la_ == 1:
-                        self.state = 47
+                        self.state = 51
                         self.match(kmmszarpParser.NEWLINE)
 
 
                     pass
                 elif token in [57]:
-                    self.state = 50
+                    self.state = 54
                     self.match(kmmszarpParser.NEWLINE)
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 55
+                self.state = 59
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -433,72 +439,72 @@ class kmmszarpParser ( Parser ):
         localctx = kmmszarpParser.StatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_statement)
         try:
-            self.state = 67
+            self.state = 71
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 56
+                self.state = 60
                 self.loopFor()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 57
+                self.state = 61
                 self.loopWhile()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 58
+                self.state = 62
                 self.conditionalStatement()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 59
+                self.state = 63
                 self.conditionalStatementElse()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 60
+                self.state = 64
                 self.functionDefinition()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 61
+                self.state = 65
                 self.variableDeclaration()
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 62
+                self.state = 66
                 self.arrayDeclaration()
                 pass
 
             elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 63
+                self.state = 67
                 self.variableAssignment()
                 pass
 
             elif la_ == 9:
                 self.enterOuterAlt(localctx, 9)
-                self.state = 64
+                self.state = 68
                 self.arrayAssignment()
                 pass
 
             elif la_ == 10:
                 self.enterOuterAlt(localctx, 10)
-                self.state = 65
+                self.state = 69
                 self.functionCall()
                 pass
 
             elif la_ == 11:
                 self.enterOuterAlt(localctx, 11)
-                self.state = 66
+                self.state = 70
                 self.cast()
                 pass
 
@@ -519,16 +525,19 @@ class kmmszarpParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def variableDeclaration(self):
-            return self.getTypedRuleContext(kmmszarpParser.VariableDeclarationContext,0)
-
-
         def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(kmmszarpParser.ExpressionContext)
             else:
                 return self.getTypedRuleContext(kmmszarpParser.ExpressionContext,i)
 
+
+        def pureVariableDeclaration(self):
+            return self.getTypedRuleContext(kmmszarpParser.PureVariableDeclarationContext,0)
+
+
+        def ID(self):
+            return self.getToken(kmmszarpParser.ID, 0)
 
         def NEWLINE(self, i:int=None):
             if i is None:
@@ -570,45 +579,57 @@ class kmmszarpParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 69
-            self.match(kmmszarpParser.T__0)
-            self.state = 70
-            self.match(kmmszarpParser.T__1)
-            self.state = 71
-            self.variableDeclaration()
-            self.state = 72
-            self.match(kmmszarpParser.T__2)
             self.state = 73
-            self.expression(0)
+            self.match(kmmszarpParser.T__0)
             self.state = 74
-            self.match(kmmszarpParser.T__3)
-            self.state = 75
-            self.expression(0)
-            self.state = 76
-            self.match(kmmszarpParser.T__4)
+            self.match(kmmszarpParser.T__1)
+            self.state = 77
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [19]:
+                self.state = 75
+                self.pureVariableDeclaration()
+                pass
+            elif token in [49]:
+                self.state = 76
+                self.match(kmmszarpParser.ID)
+                pass
+            else:
+                raise NoViableAltException(self)
+
+            self.state = 79
+            self.match(kmmszarpParser.T__2)
             self.state = 80
+            self.expression(0)
+            self.state = 81
+            self.match(kmmszarpParser.T__3)
+            self.state = 82
+            self.expression(0)
+            self.state = 83
+            self.match(kmmszarpParser.T__4)
+            self.state = 87
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==57:
-                self.state = 77
+                self.state = 84
                 self.match(kmmszarpParser.NEWLINE)
-                self.state = 82
+                self.state = 89
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 88
+            self.state = 95
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 562951635869954) != 0):
-                self.state = 83
-                self.statement()
-                self.state = 84
-                self.match(kmmszarpParser.NEWLINE)
                 self.state = 90
+                self.statement()
+                self.state = 91
+                self.match(kmmszarpParser.NEWLINE)
+                self.state = 97
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 91
+            self.state = 98
             self.match(kmmszarpParser.T__5)
         except RecognitionException as re:
             localctx.exception = re
@@ -670,37 +691,37 @@ class kmmszarpParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 93
-            self.match(kmmszarpParser.T__0)
-            self.state = 94
-            self.match(kmmszarpParser.T__6)
-            self.state = 95
-            self.expression(0)
-            self.state = 96
-            self.match(kmmszarpParser.T__4)
             self.state = 100
+            self.match(kmmszarpParser.T__0)
+            self.state = 101
+            self.match(kmmszarpParser.T__6)
+            self.state = 102
+            self.expression(0)
+            self.state = 103
+            self.match(kmmszarpParser.T__4)
+            self.state = 107
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==57:
-                self.state = 97
+                self.state = 104
                 self.match(kmmszarpParser.NEWLINE)
-                self.state = 102
+                self.state = 109
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 108
+            self.state = 115
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 562951635869954) != 0):
-                self.state = 103
-                self.statement()
-                self.state = 104
-                self.match(kmmszarpParser.NEWLINE)
                 self.state = 110
+                self.statement()
+                self.state = 111
+                self.match(kmmszarpParser.NEWLINE)
+                self.state = 117
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 111
+            self.state = 118
             self.match(kmmszarpParser.T__5)
         except RecognitionException as re:
             localctx.exception = re
@@ -762,37 +783,37 @@ class kmmszarpParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 113
-            self.match(kmmszarpParser.T__7)
-            self.state = 114
-            self.expression(0)
-            self.state = 115
-            self.match(kmmszarpParser.T__8)
-            self.state = 116
-            self.match(kmmszarpParser.T__9)
             self.state = 120
+            self.match(kmmszarpParser.T__7)
+            self.state = 121
+            self.expression(0)
+            self.state = 122
+            self.match(kmmszarpParser.T__8)
+            self.state = 123
+            self.match(kmmszarpParser.T__9)
+            self.state = 127
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==57:
-                self.state = 117
+                self.state = 124
                 self.match(kmmszarpParser.NEWLINE)
-                self.state = 122
+                self.state = 129
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 128
+            self.state = 135
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 562951635869954) != 0):
-                self.state = 123
-                self.statement()
-                self.state = 124
-                self.match(kmmszarpParser.NEWLINE)
                 self.state = 130
+                self.statement()
+                self.state = 131
+                self.match(kmmszarpParser.NEWLINE)
+                self.state = 137
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 131
+            self.state = 138
             self.match(kmmszarpParser.T__10)
         except RecognitionException as re:
             localctx.exception = re
@@ -854,45 +875,45 @@ class kmmszarpParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 133
-            self.conditionalStatement()
-            self.state = 137
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==57:
-                self.state = 134
-                self.match(kmmszarpParser.NEWLINE)
-                self.state = 139
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
             self.state = 140
-            self.match(kmmszarpParser.T__11)
-            self.state = 141
-            self.match(kmmszarpParser.T__9)
-            self.state = 145
+            self.conditionalStatement()
+            self.state = 144
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==57:
-                self.state = 142
+                self.state = 141
                 self.match(kmmszarpParser.NEWLINE)
-                self.state = 147
+                self.state = 146
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 153
+            self.state = 147
+            self.match(kmmszarpParser.T__11)
+            self.state = 148
+            self.match(kmmszarpParser.T__9)
+            self.state = 152
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==57:
+                self.state = 149
+                self.match(kmmszarpParser.NEWLINE)
+                self.state = 154
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 160
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 562951635869954) != 0):
-                self.state = 148
-                self.statement()
-                self.state = 149
-                self.match(kmmszarpParser.NEWLINE)
                 self.state = 155
+                self.statement()
+                self.state = 156
+                self.match(kmmszarpParser.NEWLINE)
+                self.state = 162
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 156
+            self.state = 163
             self.match(kmmszarpParser.T__10)
         except RecognitionException as re:
             localctx.exception = re
@@ -965,69 +986,69 @@ class kmmszarpParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 158
+            self.state = 165
             self.match(kmmszarpParser.T__12)
-            self.state = 159
+            self.state = 166
             self.match(kmmszarpParser.ID)
-            self.state = 162
+            self.state = 169
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==14:
-                self.state = 160
+                self.state = 167
                 self.match(kmmszarpParser.T__13)
-                self.state = 161
+                self.state = 168
                 self.parameterList()
 
 
-            self.state = 164
+            self.state = 171
             self.match(kmmszarpParser.T__14)
-            self.state = 165
+            self.state = 172
             self.dtype()
-            self.state = 166
+            self.state = 173
             self.match(kmmszarpParser.T__15)
-            self.state = 170
+            self.state = 177
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,15,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 167
+                    self.state = 174
                     self.match(kmmszarpParser.NEWLINE) 
-                self.state = 172
+                self.state = 179
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,15,self._ctx)
 
-            self.state = 178
+            self.state = 185
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 562951635869954) != 0):
-                self.state = 173
-                self.statement()
-                self.state = 174
-                self.match(kmmszarpParser.NEWLINE)
                 self.state = 180
+                self.statement()
+                self.state = 181
+                self.match(kmmszarpParser.NEWLINE)
+                self.state = 187
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 182
+            self.state = 189
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==20:
-                self.state = 181
+                self.state = 188
                 self.returnStatement()
 
 
-            self.state = 187
+            self.state = 194
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,17,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,18,self._ctx)
             while _alt!=1 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1+1:
-                    self.state = 184
+                    self.state = 191
                     self.match(kmmszarpParser.NEWLINE) 
-                self.state = 189
+                self.state = 196
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,17,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,18,self._ctx)
 
-            self.state = 190
+            self.state = 197
             self.match(kmmszarpParser.T__16)
         except RecognitionException as re:
             localctx.exception = re
@@ -1079,21 +1100,21 @@ class kmmszarpParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 200
+            self.state = 207
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==19:
-                self.state = 192
+                self.state = 199
                 self.parameter()
-                self.state = 197
+                self.state = 204
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==18:
-                    self.state = 193
+                    self.state = 200
                     self.match(kmmszarpParser.T__17)
-                    self.state = 194
+                    self.state = 201
                     self.parameter()
-                    self.state = 199
+                    self.state = 206
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
@@ -1148,11 +1169,11 @@ class kmmszarpParser ( Parser ):
         self.enterRule(localctx, 16, self.RULE_parameter)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 202
+            self.state = 209
             self.match(kmmszarpParser.T__18)
-            self.state = 203
+            self.state = 210
             self.dtype()
-            self.state = 204
+            self.state = 211
             self.match(kmmszarpParser.ID)
         except RecognitionException as re:
             localctx.exception = re
@@ -1200,9 +1221,9 @@ class kmmszarpParser ( Parser ):
         self.enterRule(localctx, 18, self.RULE_returnStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 206
+            self.state = 213
             self.match(kmmszarpParser.T__19)
-            self.state = 207
+            self.state = 214
             self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1213,34 +1234,22 @@ class kmmszarpParser ( Parser ):
         return localctx
 
 
-    class VariableDeclarationContext(ParserRuleContext):
+    class PureVariableDeclarationContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return kmmszarpParser.RULE_variableDeclaration
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class PureVariableDeclarationContext(VariableDeclarationContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a kmmszarpParser.VariableDeclarationContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def dtype(self):
             return self.getTypedRuleContext(kmmszarpParser.DtypeContext,0)
 
+
         def ID(self):
             return self.getToken(kmmszarpParser.ID, 0)
+
+        def getRuleIndex(self):
+            return kmmszarpParser.RULE_pureVariableDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPureVariableDeclaration" ):
@@ -1257,20 +1266,49 @@ class kmmszarpParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
-    class VariableDeclarationWithAssignmentContext(VariableDeclarationContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a kmmszarpParser.VariableDeclarationContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
+
+    def pureVariableDeclaration(self):
+
+        localctx = kmmszarpParser.PureVariableDeclarationContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 20, self.RULE_pureVariableDeclaration)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 216
+            self.match(kmmszarpParser.T__18)
+            self.state = 217
+            self.dtype()
+            self.state = 218
+            self.match(kmmszarpParser.ID)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class VariableDeclarationWithAssignmentContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
 
         def dtype(self):
             return self.getTypedRuleContext(kmmszarpParser.DtypeContext,0)
 
+
         def ID(self):
             return self.getToken(kmmszarpParser.ID, 0)
+
         def expression(self):
             return self.getTypedRuleContext(kmmszarpParser.ExpressionContext,0)
 
+
+        def getRuleIndex(self):
+            return kmmszarpParser.RULE_variableDeclarationWithAssignment
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterVariableDeclarationWithAssignment" ):
@@ -1288,38 +1326,85 @@ class kmmszarpParser ( Parser ):
 
 
 
+
+    def variableDeclarationWithAssignment(self):
+
+        localctx = kmmszarpParser.VariableDeclarationWithAssignmentContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 22, self.RULE_variableDeclarationWithAssignment)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 220
+            self.match(kmmszarpParser.T__18)
+            self.state = 221
+            self.dtype()
+            self.state = 222
+            self.match(kmmszarpParser.ID)
+            self.state = 223
+            self.match(kmmszarpParser.T__20)
+            self.state = 224
+            self.expression(0)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class VariableDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def pureVariableDeclaration(self):
+            return self.getTypedRuleContext(kmmszarpParser.PureVariableDeclarationContext,0)
+
+
+        def variableDeclarationWithAssignment(self):
+            return self.getTypedRuleContext(kmmszarpParser.VariableDeclarationWithAssignmentContext,0)
+
+
+        def getRuleIndex(self):
+            return kmmszarpParser.RULE_variableDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariableDeclaration" ):
+                listener.enterVariableDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariableDeclaration" ):
+                listener.exitVariableDeclaration(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitVariableDeclaration" ):
+                return visitor.visitVariableDeclaration(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
     def variableDeclaration(self):
 
         localctx = kmmszarpParser.VariableDeclarationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_variableDeclaration)
+        self.enterRule(localctx, 24, self.RULE_variableDeclaration)
         try:
-            self.state = 219
+            self.state = 228
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,21,self._ctx)
             if la_ == 1:
-                localctx = kmmszarpParser.PureVariableDeclarationContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 209
-                self.match(kmmszarpParser.T__18)
-                self.state = 210
-                self.dtype()
-                self.state = 211
-                self.match(kmmszarpParser.ID)
+                self.state = 226
+                self.pureVariableDeclaration()
                 pass
 
             elif la_ == 2:
-                localctx = kmmszarpParser.VariableDeclarationWithAssignmentContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 213
-                self.match(kmmszarpParser.T__18)
-                self.state = 214
-                self.dtype()
-                self.state = 215
-                self.match(kmmszarpParser.ID)
-                self.state = 216
-                self.match(kmmszarpParser.T__20)
-                self.state = 217
-                self.expression(0)
+                self.state = 227
+                self.variableDeclarationWithAssignment()
                 pass
 
 
@@ -1379,39 +1464,39 @@ class kmmszarpParser ( Parser ):
     def arrayDeclaration(self):
 
         localctx = kmmszarpParser.ArrayDeclarationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_arrayDeclaration)
+        self.enterRule(localctx, 26, self.RULE_arrayDeclaration)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 221
-            self.match(kmmszarpParser.T__21)
-            self.state = 222
-            self.dtype()
-            self.state = 223
-            self.match(kmmszarpParser.ID)
-            self.state = 224
-            self.match(kmmszarpParser.T__20)
-            self.state = 225
-            self.arrayValue()
             self.state = 230
+            self.match(kmmszarpParser.T__21)
+            self.state = 231
+            self.dtype()
+            self.state = 232
+            self.match(kmmszarpParser.ID)
+            self.state = 233
+            self.match(kmmszarpParser.T__20)
+            self.state = 234
+            self.arrayValue()
+            self.state = 239
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==18:
-                self.state = 226
+                self.state = 235
                 self.match(kmmszarpParser.T__17)
-                self.state = 227
+                self.state = 236
                 self.arrayValue()
-                self.state = 232
+                self.state = 241
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 235
+            self.state = 244
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==23:
-                self.state = 233
+                self.state = 242
                 self.match(kmmszarpParser.T__22)
-                self.state = 234
+                self.state = 243
                 self.match(kmmszarpParser.PINT)
 
 
@@ -1458,10 +1543,10 @@ class kmmszarpParser ( Parser ):
     def arrayValue(self):
 
         localctx = kmmszarpParser.ArrayValueContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_arrayValue)
+        self.enterRule(localctx, 28, self.RULE_arrayValue)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 237
+            self.state = 246
             self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1509,19 +1594,19 @@ class kmmszarpParser ( Parser ):
     def variableReference(self):
 
         localctx = kmmszarpParser.VariableReferenceContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_variableReference)
+        self.enterRule(localctx, 30, self.RULE_variableReference)
         try:
-            self.state = 241
+            self.state = 250
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [49]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 239
+                self.state = 248
                 self.match(kmmszarpParser.ID)
                 pass
             elif token in [24]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 240
+                self.state = 249
                 self.arrayAccess()
                 pass
             else:
@@ -1573,16 +1658,16 @@ class kmmszarpParser ( Parser ):
     def arrayAccess(self):
 
         localctx = kmmszarpParser.ArrayAccessContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_arrayAccess)
+        self.enterRule(localctx, 32, self.RULE_arrayAccess)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 243
+            self.state = 252
             self.match(kmmszarpParser.T__23)
-            self.state = 244
+            self.state = 253
             self.expression(0)
-            self.state = 245
+            self.state = 254
             self.match(kmmszarpParser.T__24)
-            self.state = 246
+            self.state = 255
             self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1630,14 +1715,14 @@ class kmmszarpParser ( Parser ):
     def variableAssignment(self):
 
         localctx = kmmszarpParser.VariableAssignmentContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_variableAssignment)
+        self.enterRule(localctx, 34, self.RULE_variableAssignment)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 248
+            self.state = 257
             self.match(kmmszarpParser.ID)
-            self.state = 249
+            self.state = 258
             self.match(kmmszarpParser.T__20)
-            self.state = 250
+            self.state = 259
             self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1685,20 +1770,20 @@ class kmmszarpParser ( Parser ):
     def arrayAssignment(self):
 
         localctx = kmmszarpParser.ArrayAssignmentContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_arrayAssignment)
+        self.enterRule(localctx, 36, self.RULE_arrayAssignment)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 252
+            self.state = 261
             self.match(kmmszarpParser.T__25)
-            self.state = 253
+            self.state = 262
             self.expression(0)
-            self.state = 254
+            self.state = 263
             self.match(kmmszarpParser.T__26)
-            self.state = 255
+            self.state = 264
             self.expression(0)
-            self.state = 256
+            self.state = 265
             self.match(kmmszarpParser.T__27)
-            self.state = 257
+            self.state = 266
             self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1746,14 +1831,14 @@ class kmmszarpParser ( Parser ):
     def functionCall(self):
 
         localctx = kmmszarpParser.FunctionCallContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_functionCall)
+        self.enterRule(localctx, 38, self.RULE_functionCall)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 259
+            self.state = 268
             self.match(kmmszarpParser.T__28)
-            self.state = 260
+            self.state = 269
             self.match(kmmszarpParser.ID)
-            self.state = 261
+            self.state = 270
             self.argumentList()
         except RecognitionException as re:
             localctx.exception = re
@@ -1808,49 +1893,49 @@ class kmmszarpParser ( Parser ):
     def argumentList(self):
 
         localctx = kmmszarpParser.ArgumentListContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_argumentList)
+        self.enterRule(localctx, 40, self.RULE_argumentList)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 277
+            self.state = 286
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,28,self._ctx)
             if la_ == 1:
-                self.state = 265
+                self.state = 274
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [19]:
-                    self.state = 263
+                    self.state = 272
                     self.variableDeclaration()
                     pass
                 elif token in [24, 49, 50, 52, 53, 54]:
-                    self.state = 264
+                    self.state = 273
                     self.expression(0)
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 274
+                self.state = 283
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==18:
-                    self.state = 267
+                    self.state = 276
                     self.match(kmmszarpParser.T__17)
-                    self.state = 270
+                    self.state = 279
                     self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [19]:
-                        self.state = 268
+                        self.state = 277
                         self.variableDeclaration()
                         pass
                     elif token in [24, 49, 50, 52, 53, 54]:
-                        self.state = 269
+                        self.state = 278
                         self.expression(0)
                         pass
                     else:
                         raise NoViableAltException(self)
 
-                    self.state = 276
+                    self.state = 285
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
@@ -1903,16 +1988,16 @@ class kmmszarpParser ( Parser ):
     def cast(self):
 
         localctx = kmmszarpParser.CastContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 38, self.RULE_cast)
+        self.enterRule(localctx, 42, self.RULE_cast)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 279
+            self.state = 288
             self.match(kmmszarpParser.T__29)
-            self.state = 280
+            self.state = 289
             self.expression(0)
-            self.state = 281
+            self.state = 290
             self.match(kmmszarpParser.T__26)
-            self.state = 282
+            self.state = 291
             self.dtype()
         except RecognitionException as re:
             localctx.exception = re
@@ -2173,12 +2258,12 @@ class kmmszarpParser ( Parser ):
         _parentState = self.state
         localctx = kmmszarpParser.ExpressionContext(self, self._ctx, _parentState)
         _prevctx = localctx
-        _startState = 40
-        self.enterRecursionRule(localctx, 40, self.RULE_expression, _p)
+        _startState = 44
+        self.enterRecursionRule(localctx, 44, self.RULE_expression, _p)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 290
+            self.state = 299
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [54]:
@@ -2186,43 +2271,43 @@ class kmmszarpParser ( Parser ):
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 285
+                self.state = 294
                 self.match(kmmszarpParser.LPAR)
-                self.state = 286
+                self.state = 295
                 self.expression(0)
-                self.state = 287
+                self.state = 296
                 self.match(kmmszarpParser.RPAR)
                 pass
             elif token in [24, 49, 50, 52, 53]:
                 localctx = kmmszarpParser.PrimaryExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 289
+                self.state = 298
                 self.primary()
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 312
+            self.state = 321
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,30,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,31,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 310
+                    self.state = 319
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,29,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,30,self._ctx)
                     if la_ == 1:
                         localctx = kmmszarpParser.MultiplicationContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 292
+                        self.state = 301
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
-                        self.state = 293
+                        self.state = 302
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 15032385536) != 0)):
@@ -2230,18 +2315,18 @@ class kmmszarpParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 294
+                        self.state = 303
                         self.expression(8)
                         pass
 
                     elif la_ == 2:
                         localctx = kmmszarpParser.AdditionContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 295
+                        self.state = 304
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 296
+                        self.state = 305
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==34 or _la==35):
@@ -2249,18 +2334,18 @@ class kmmszarpParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 297
+                        self.state = 306
                         self.expression(7)
                         pass
 
                     elif la_ == 3:
                         localctx = kmmszarpParser.ComparisonContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 298
+                        self.state = 307
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 299
+                        self.state = 308
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 1030792151040) != 0)):
@@ -2268,18 +2353,18 @@ class kmmszarpParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 300
+                        self.state = 309
                         self.expression(6)
                         pass
 
                     elif la_ == 4:
                         localctx = kmmszarpParser.EqualityContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 301
+                        self.state = 310
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 302
+                        self.state = 311
                         localctx.eq = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==40 or _la==41):
@@ -2287,40 +2372,40 @@ class kmmszarpParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 303
+                        self.state = 312
                         self.expression(5)
                         pass
 
                     elif la_ == 5:
                         localctx = kmmszarpParser.LogicAndContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 304
+                        self.state = 313
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 305
+                        self.state = 314
                         localctx.and_ = self.match(kmmszarpParser.T__41)
-                        self.state = 306
+                        self.state = 315
                         self.expression(4)
                         pass
 
                     elif la_ == 6:
                         localctx = kmmszarpParser.LogicOrContext(self, kmmszarpParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 307
+                        self.state = 316
                         if not self.precpred(self._ctx, 2):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                        self.state = 308
+                        self.state = 317
                         localctx.or_ = self.match(kmmszarpParser.T__42)
-                        self.state = 309
+                        self.state = 318
                         self.expression(3)
                         pass
 
              
-                self.state = 314
+                self.state = 323
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,30,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,31,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2449,33 +2534,33 @@ class kmmszarpParser ( Parser ):
     def primary(self):
 
         localctx = kmmszarpParser.PrimaryContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 42, self.RULE_primary)
+        self.enterRule(localctx, 46, self.RULE_primary)
         try:
-            self.state = 319
+            self.state = 328
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [50]:
                 localctx = kmmszarpParser.IntLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 315
+                self.state = 324
                 self.match(kmmszarpParser.INT)
                 pass
             elif token in [52]:
                 localctx = kmmszarpParser.StringLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 316
+                self.state = 325
                 self.match(kmmszarpParser.STRING)
                 pass
             elif token in [53]:
                 localctx = kmmszarpParser.BoolLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 317
+                self.state = 326
                 self.match(kmmszarpParser.BOOL)
                 pass
             elif token in [24, 49]:
                 localctx = kmmszarpParser.VariableReferencePrimaryContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 318
+                self.state = 327
                 self.variableReference()
                 pass
             else:
@@ -2521,11 +2606,11 @@ class kmmszarpParser ( Parser ):
     def dtype(self):
 
         localctx = kmmszarpParser.DtypeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 44, self.RULE_dtype)
+        self.enterRule(localctx, 48, self.RULE_dtype)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 321
+            self.state = 330
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 263882790666240) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2545,7 +2630,7 @@ class kmmszarpParser ( Parser ):
     def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
         if self._predicates == None:
             self._predicates = dict()
-        self._predicates[20] = self.expression_sempred
+        self._predicates[22] = self.expression_sempred
         pred = self._predicates.get(ruleIndex, None)
         if pred is None:
             raise Exception("No predicate with index:" + str(ruleIndex))

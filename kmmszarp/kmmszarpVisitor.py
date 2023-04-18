@@ -69,6 +69,11 @@ class kmmszarpVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by kmmszarpParser#variableDeclaration.
+    def visitVariableDeclaration(self, ctx:kmmszarpParser.VariableDeclarationContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by kmmszarpParser#arrayDeclaration.
     def visitArrayDeclaration(self, ctx:kmmszarpParser.ArrayDeclarationContext):
         return self.visitChildren(ctx)
