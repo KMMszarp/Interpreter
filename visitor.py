@@ -255,6 +255,9 @@ class Visitor(baseVisitor):
             raise ExecutionError(ctx.start.line, ctx.start.column, "Negacja musi być typu prawdziwość")
         return Variable("_tmp", Type.BOOL, not expression.value)
 
+    def visitCastExpression(self, ctx:kmmszarpParser.CastExpressionContext):
+        return self.visit(ctx.cast())
+
     def visitCast(self, ctx:kmmszarpParser.CastContext):
         expression: Variable = self.visit(ctx.expression())
         type = ctx.dtype().getText()

@@ -269,6 +269,15 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by kmmszarpParser#CastExpression.
+    def enterCastExpression(self, ctx:kmmszarpParser.CastExpressionContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#CastExpression.
+    def exitCastExpression(self, ctx:kmmszarpParser.CastExpressionContext):
+        pass
+
+
     # Enter a parse tree produced by kmmszarpParser#Equality.
     def enterEquality(self, ctx:kmmszarpParser.EqualityContext):
         pass
