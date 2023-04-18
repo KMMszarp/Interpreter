@@ -100,7 +100,7 @@ class Data:
 
             return value
 
-        self.variables[name] = value
+        self.variables[name].value = value
         self.variables[name].is_initialized = True
 
         return self.variables[name]
