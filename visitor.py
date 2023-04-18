@@ -202,5 +202,48 @@ class Visitor(baseVisitor):
 
         return Variable("_tmp", Type.BOOL, result)
 
+    def visitConditionalStatement(self, ctx: kmmszarpParser.ConditionalStatementContext):
+        condition_result: Variable = self.visit(ctx.expression())
+        if condition_result.dtype != Type.BOOL:
+            raise ExecutionError(ctx.start.line, ctx.start.column + 7, "Warunek musi być typu prawdziwość")
+        if condition_result.value:
+            for statement in ctx.statement():
+                self.visit(statement)
+            return True
+        return False
+
+    def visitConditionalStatementElse(self, ctx:kmmszarpParser.ConditionalStatementElseContext):
+         if not self.visit(ctx.conditionalStatement()):
+             for statement in ctx.statement():
+                 self.visit(statement)
+
+    def visitLoopWhile(self, ctx:kmmszarpParser.LoopWhileContext):
+        condition_result: Variable = self.visit(ctx.expression())
+        if condition_result.dtype != Type.BOOL:
+            raise ExecutionError(ctx.start.line, ctx.start.column + 7, "Warunek musi być typu prawdziwość")
+        while condition_result.value:
+            for statement in ctx.statement():
+                self.visit(statement)
+            condition_result = self.visit(ctx.expression())
+
+    def visitLoopFor(self, ctx:kmmszarpParser.LoopForContext):
+        i_name = ctx.ID().getText()
+        a: Variable = self.visit(ctx.expression(0))
+        b: Variable = self.visit(ctx.expression(1))
+        if a.dtype != Type.INT and b.dtype != Type.INT:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Końce przedziału muszą być typu liczba")
+        if a.value > b.value:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Początek przedziału musi być mniejszy lub równy od końca")
+
+        if not self.data.check_if_declared(i_name):
+            raise ExecutionError(ctx.start.line, ctx.start.column, f"Zmienna {i_name} nie została zadeklarowana")
+
+        self.data.set_variable(i_name, a)
+
+        for i in range(a.value, b.value):
+            for statement in ctx.statement():
+                self.visit(statement)
+            self.data.set_variable(i_name, i + 1)
+
     def visitParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
         return self.visit(ctx.expression())
