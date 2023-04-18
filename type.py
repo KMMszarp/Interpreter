@@ -50,12 +50,13 @@ class Array:
     is_initialized: bool = False
 
 
-@dataclass
-class Variable:
-    name: str
+class VariableLike:
     dtype: Type
-    value: any = None
-    is_initialized: bool = False
+    value: any
+
+    def __init__(self, dtype: Type, value: any):
+        self.dtype = dtype
+        self.value = value
 
     def __str__(self):
         if self.dtype == Type.BOOL:
@@ -67,6 +68,20 @@ class Variable:
         return str(self.value)
 
 
+class ParsedExpression(VariableLike):
+    pass
+
+
+class Variable(VariableLike):
+    name: str
+    is_initialized: bool
+
+    def __init__(self, name: str, dtype: Type, value: any = None, is_initialized: bool = False):
+        super().__init__(dtype, value)
+        self.name = name
+        self.is_initialized = is_initialized
+
+
 class Data:
     def __init__(self):
         self.variables: dict[str, Variable] = {}
@@ -75,7 +90,7 @@ class Data:
         if name in self.variables:
             raise VariableRedeclarationError(name)
 
-        v = Variable(name, dtype, None)
+        v = Variable(name, dtype)
         self.variables[name] = v
 
     def create_and_initialize_variable(self, name: str, dtype: Type, value: any) -> any:
@@ -97,15 +112,14 @@ class Data:
         if name not in self.variables:
             raise VariableNotDeclaredError(name)
 
-        if isinstance(value, Variable):
+        if isinstance(value, VariableLike):
             self.variables[name].value = value.value
-            self.variables[name].is_initialized = True
+        elif isinstance(value, (int, str, bool)):
+            self.variables[name].value = value
+        else:
+            raise NotImplementedError(f"Nieznany typ {type(value)}")
 
-            return value
-
-        self.variables[name].value = value
         self.variables[name].is_initialized = True
-
         return self.variables[name]
 
     def check_if_declared(self, name: str) -> bool:
