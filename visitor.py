@@ -194,3 +194,6 @@ class Visitor(baseVisitor):
             result = raw_left != raw_right
 
         return Variable("_tmp", Type.BOOL, result)
+
+    def visitParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
+        return self.visit(ctx.expression())
