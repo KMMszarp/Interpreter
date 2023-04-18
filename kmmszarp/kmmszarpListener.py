@@ -197,6 +197,15 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by kmmszarpParser#ParenthesizedExpression.
+    def enterParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#ParenthesizedExpression.
+    def exitParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
+        pass
+
+
     # Enter a parse tree produced by kmmszarpParser#LogicOr.
     def enterLogicOr(self, ctx:kmmszarpParser.LogicOrContext):
         pass
@@ -293,15 +302,6 @@ class kmmszarpListener(ParseTreeListener):
 
     # Exit a parse tree produced by kmmszarpParser#VariableReferencePrimary.
     def exitVariableReferencePrimary(self, ctx:kmmszarpParser.VariableReferencePrimaryContext):
-        pass
-
-
-    # Enter a parse tree produced by kmmszarpParser#ParenthesizedExpression.
-    def enterParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
-        pass
-
-    # Exit a parse tree produced by kmmszarpParser#ParenthesizedExpression.
-    def exitParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
         pass
 
 

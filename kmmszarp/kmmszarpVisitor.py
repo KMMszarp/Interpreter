@@ -114,6 +114,11 @@ class kmmszarpVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by kmmszarpParser#ParenthesizedExpression.
+    def visitParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by kmmszarpParser#LogicOr.
     def visitLogicOr(self, ctx:kmmszarpParser.LogicOrContext):
         return self.visitChildren(ctx)
@@ -166,11 +171,6 @@ class kmmszarpVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by kmmszarpParser#VariableReferencePrimary.
     def visitVariableReferencePrimary(self, ctx:kmmszarpParser.VariableReferencePrimaryContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by kmmszarpParser#ParenthesizedExpression.
-    def visitParenthesizedExpression(self, ctx:kmmszarpParser.ParenthesizedExpressionContext):
         return self.visitChildren(ctx)
 
 
