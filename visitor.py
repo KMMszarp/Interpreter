@@ -187,7 +187,7 @@ class Visitor(baseVisitor):
     def visitEquality(self, ctx: kmmszarpParser.EqualityContext):
         left = self.visit(ctx.expression(0))
         right = self.visit(ctx.expression(1))
-        operator = ctx.op.text
+        operator = ctx.eq.text
 
         if left.dtype != right.dtype:
             raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można porównywać różnych typów")

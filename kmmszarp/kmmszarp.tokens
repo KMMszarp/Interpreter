@@ -58,6 +58,7 @@ LPAR=57
 RPAR=58
 WHITESPACE=59
 NEWLINE=60
+COMMENT=61
 'pętla'=1
 'zakres'=2
 'od'=3
