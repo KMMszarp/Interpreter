@@ -269,20 +269,19 @@ class Visitor(baseVisitor):
     def visitCastExpression(self, ctx: kmmszarpParser.CastExpressionContext) -> ParsedExpression:
         return self.visit(ctx.cast())
 
-    def visitCast(self, ctx:kmmszarpParser.CastContext):
-        expression: Variable = self.visit(ctx.expression())
+    def visitCast(self, ctx: kmmszarpParser.CastContext):
+        expression: VariableLike = self.visit(ctx.expression())
         type = ctx.dtype().getText()
-        name = expression.name
         value = expression.value
 
         if type == "liczba":
             if expression.dtype == Type.INT:
                 return expression
             elif expression.dtype == Type.BOOL:
-                return Variable("_tmp", Type.INT, 1 if value else 0)
+                return ParsedExpression(Type.INT, 1 if value else 0)
             else:
                 try:
-                    return Variable("_tmp", Type.INT, int(value))
+                    return ParsedExpression(Type.INT, int(value))
                 except ValueError:
                     raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można rzutować typu napis na typ liczba")
 
@@ -294,15 +293,14 @@ class Visitor(baseVisitor):
                     val = "minus " + str(abs(expression.value))
                 else:
                     val = str(abs(expression.value))
-                return Variable("_tmp", Type.STRING, val)
+                return ParsedExpression(Type.STRING, val)
             else:
-                return Variable("_tmp", Type.STRING, "prawda" if expression.value else "fałsz")
+                return ParsedExpression(Type.STRING, "prawda" if expression.value else "fałsz")
 
         else:
             if expression.dtype == Type.INT:
-                return Variable("_tmp", Type.BOOL, True if expression.value else False)
+                return ParsedExpression(Type.BOOL, True if expression.value else False)
             elif expression.dtype == Type.STRING:
-
-                return Variable("_tmp", Type.BOOL, True if expression.value else False)
+                return ParsedExpression(Type.BOOL, True if expression.value != "0" else False)
             else:
                 return expression
