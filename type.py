@@ -1,6 +1,7 @@
 from enum import Enum
 from dataclasses import dataclass
-from err import ExecutionError, VariableRedeclarationError, VariableNotDeclaredError, VariableNotInitializedError
+from err import VariableRedeclarationError, VariableNotDeclaredError, VariableNotInitializedError, \
+    VariableTypeMismatchError
 
 
 class Type(Enum):
@@ -39,7 +40,7 @@ class Type(Enum):
         elif self == Type.VOID:
             return "nicość"
 
-        return self.__class__.__name__
+        return self.name
 
 
 @dataclass
@@ -51,6 +52,9 @@ class Array:
 
 
 class VariableLike:
+    """
+    Represents a variable or a value of an expression computed during runtime
+    """
     dtype: Type
     value: any
 
@@ -69,10 +73,16 @@ class VariableLike:
 
 
 class ParsedExpression(VariableLike):
+    """
+    Represents a value of an expression computed during runtime
+    """
     pass
 
 
 class Variable(VariableLike):
+    """
+    Represents a variable
+    """
     name: str
     is_initialized: bool
 
@@ -81,25 +91,74 @@ class Variable(VariableLike):
         self.name = name
         self.is_initialized = is_initialized
 
+    def __get__(self, instance, owner):
+        if not self.is_initialized:
+            raise VariableNotInitializedError(self.name)
+
+        return self
+
+    def set_value(self, value: int | str | bool) -> "Variable":
+        self.value = value
+        return self
+
+    def get_value(self) -> int | str | bool:
+        if not self.is_initialized:
+            raise VariableNotInitializedError(self.name)
+
+        return self.value
+
+    def get_dtype(self):
+        return self.dtype
+
 
 class Data:
     def __init__(self):
         self.variables: dict[str, Variable] = {}
 
-    def create_variable(self, name: str, dtype: Type):
+    def create_variable(self, name: str, dtype: Type) -> Variable:
+        """
+        Creates a new uninitialized variable, adds it to data and returns it
+
+        :param name: Name of the variable, must be unique
+        :param dtype: Type of the variable
+        :returns: Created variable
+        :raises VariableRedeclarationError: If variable with given name already exists
+        """
         if name in self.variables:
             raise VariableRedeclarationError(name)
 
         v = Variable(name, dtype)
         self.variables[name] = v
 
-    def create_and_initialize_variable(self, name: str, dtype: Type, value: any) -> any:
+        return self.variables[name]
+
+    def create_and_initialize_variable(self, name: str, dtype: Type, value: str | int | bool | VariableLike) \
+            -> Variable:
+        """
+        Creates and initializes a new variable, same as calling create_variable and set_variable
+
+        :param name: Name of the variable, must be unique
+        :param dtype: Type of the variable
+        :param value: Value to set the variable to
+        :returns: Created variable
+        :raises VariableRedeclarationError: If variable with given name already exists
+        :raises VariableNotInitializedError: If value is a Variable and it's not initialized
+        :raises NotImplementedError: If value is not a Variable, int, str or bool
+        """
         self.create_variable(name, dtype)
         self.set_variable(name, value)
 
-        return value
+        return self.variables[name]
 
-    def get_variable(self, name: str) -> any:
+    def get_variable(self, name: str) -> Variable:
+        """
+        Gets a variable from data
+
+        :param name: Name of the variable to get
+        :returns: Variable with given name
+        :raises VariableNotDeclaredError: If variable with given name doesn't exist
+        :raises VariableNotInitializedError: If variable with given name exists but is not initialized
+        """
         if name not in self.variables:
             raise VariableNotDeclaredError(name)
 
@@ -108,7 +167,18 @@ class Data:
 
         return self.variables[name]
 
-    def set_variable(self, name: str, value: any):
+    def set_variable(self, name: str, value: str | int | bool | VariableLike) -> Variable:
+        """
+        Sets a variable to a given value
+
+        :param name: Name of the variable to set
+        :param value: Value to set the variable to
+        :returns: Variable with a new value
+        :raises VariableNotDeclaredError: If variable with given name doesn't exist
+        :raises VariableNotInitializedError: If value is a Variable, and it's not initialized
+        :raises VariableTypeMismatchError: If value is a VariableLike, and the types mismatch
+        :raises NotImplementedError: If value is not a Variable, int, str or bool
+        """
         if name not in self.variables:
             raise VariableNotDeclaredError(name)
 
@@ -117,6 +187,9 @@ class Data:
                 raise VariableNotInitializedError(value.name)
 
             self.variables[name].value = value.value
+
+            if value.dtype != self.variables[name].get_dtype():
+                raise VariableTypeMismatchError(name, self.variables[name].get_dtype(), value.dtype)
 
         elif isinstance(value, (int, str, bool)):
             self.variables[name].value = value
@@ -128,9 +201,21 @@ class Data:
         return self.variables[name]
 
     def check_if_declared(self, name: str) -> bool:
+        """
+        Checks if a variable with given name is declared
+
+        :param name: Name of the variable to check
+        :return: True if variable is declared, False otherwise
+        """
         return name in self.variables
 
-    def remove_variable(self, name: str):
+    def remove_variable(self, name: str) -> None:
+        """
+        Removes a variable from data
+
+        :param name: Name of the variable to remove
+        :raises VariableNotDeclaredError: If variable with given name doesn't exist
+        """
         if name not in self.variables:
             raise VariableNotDeclaredError(name)
 

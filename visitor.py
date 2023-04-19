@@ -1,6 +1,7 @@
 from kmmszarp.kmmszarpVisitor import kmmszarpVisitor as baseVisitor
 from kmmszarp.kmmszarpParser import kmmszarpParser
-from err import ExecutionError, VariableNotDeclaredError, VariableNotInitializedError, VariableRedeclarationError
+from err import ExecutionError, VariableNotDeclaredError, VariableNotInitializedError, VariableRedeclarationError \
+    , VariableTypeMismatchError
 
 from type import Data, Type, Variable, ParsedExpression, VariableLike
 
@@ -14,28 +15,27 @@ class Visitor(baseVisitor):
         for stmt in ctx.statement():
             if stmt.variableDeclaration():
                 vd = stmt.variableDeclaration()
-                variable_type = None
+                raw_variable_type = None
                 variable_name = None
 
                 if vd.pureVariableDeclaration():
-                    variable_type = vd.pureVariableDeclaration().dtype().getText()
+                    raw_variable_type = vd.pureVariableDeclaration().dtype().getText()
                     variable_name = vd.pureVariableDeclaration().ID().getText()
                 elif vd.variableDeclarationWithAssignment():
-                    variable_type = vd.variableDeclarationWithAssignment().dtype().getText()
+                    raw_variable_type = vd.variableDeclarationWithAssignment().dtype().getText()
                     variable_name = vd.variableDeclarationWithAssignment().ID().getText()
 
-                if variable_name in self.data.variables:
+                if self.data.check_if_declared(variable_name):
                     raise ExecutionError(ctx.start.line, ctx.start.column,
                                          f"Zmienna {variable_name} została już zadeklarowana")
 
-                if variable_type == "liczba":
-                    self.data.create_variable(variable_name, Type.INT)
-                elif variable_type == "napis":
-                    self.data.create_variable(variable_name, Type.STRING)
-                elif variable_type == "prawdziwość":
-                    self.data.create_variable(variable_name, Type.BOOL)
-                else:
-                    raise ExecutionError(ctx.start.line, ctx.start.column, "Nieznany typ zmiennej")
+                try:
+                    variable_type = Type.from_string(raw_variable_type)
+                except NotImplementedError as e:
+                    raise ExecutionError(ctx.start.line, ctx.start.column,
+                                         f"Błędny typ zmiennej {raw_variable_type}")
+
+                self.data.create_variable(variable_name, variable_type)
 
         # Execute all statements
         for stmt in ctx.statement():
@@ -54,10 +54,12 @@ class Visitor(baseVisitor):
         raw_value = ctx.getText()
         return ParsedExpression(Type.INT, int(raw_value))
 
-    def visitUnaryMinus(self, ctx:kmmszarpParser.UnaryMinusContext):
+    def visitUnaryMinus(self, ctx: kmmszarpParser.UnaryMinusContext):
         expr = self.visit(ctx.expression())
+
         if expr.dtype != Type.INT:
             raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można odjąć od wartości typu napis")
+
         return ParsedExpression(Type.INT, -expr.value)
 
     def visitStringLiteral(self, ctx: kmmszarpParser.StringLiteralContext):
@@ -68,7 +70,7 @@ class Visitor(baseVisitor):
         raw_value = ctx.getText() == "prawda"
         return ParsedExpression(Type.BOOL, raw_value)
 
-    #def visitPureVariableDeclaration(self, ctx: kmmszarpParser.PureVariableDeclarationContext):
+    # def visitPureVariableDeclaration(self, ctx: kmmszarpParser.PureVariableDeclarationContext):
     #    name = ctx.ID().getText()
     #    self.data.create_variable(name)
 
@@ -77,13 +79,14 @@ class Visitor(baseVisitor):
         dtype = Type.from_string(ctx.dtype().getText())
         value: VariableLike = self.visit(ctx.expression())
 
-        if dtype != value.dtype:
+        try:
+            return self.data.set_variable(name, value)
+        except VariableTypeMismatchError as e:
             raise ExecutionError(ctx.start.line, ctx.start.column,
-                                 f"Nie można przypisać wartości typu {value.dtype} do zmiennej typu {dtype}")
+                                 f"Nie można przypisać wartości typu {e.actual_type} do zmiennej typu {e.expected_type}"
+                                 )
 
-        return self.data.set_variable(name, value)
-
-    def visitVariableAssignment(self, ctx: kmmszarpParser.VariableAssignmentContext):
+    def visitVariableAssignment(self, ctx: kmmszarpParser.VariableAssignmentContext) -> Variable:
         name = ctx.ID().getText()
 
         if not self.data.check_if_declared(name):
@@ -94,13 +97,15 @@ class Visitor(baseVisitor):
         expected_type = self.data.variables[name].dtype
         actual_type = value.dtype
 
-        if expected_type != actual_type:
+        try:
+            return self.data.set_variable(name, value)
+
+        except VariableTypeMismatchError as e:
             raise ExecutionError(ctx.start.line, ctx.start.column,
-                                 f"Nie można przypisać wartości typu {actual_type} do zmiennej typu {expected_type}")
+                                 f"Nie można przypisać wartości typu {e.actual_type} do zmiennej typu {e.expected_type}"
+                                 )
 
-        return self.data.set_variable(name, value)
-
-    def visitVariableReference(self, ctx: kmmszarpParser.VariableReferenceContext):
+    def visitVariableReference(self, ctx: kmmszarpParser.VariableReferenceContext) -> Variable:
         name = ctx.ID().getText()
         try:
             return self.data.get_variable(name)
@@ -111,7 +116,7 @@ class Visitor(baseVisitor):
             raise ExecutionError(ctx.start.line, ctx.start.column,
                                  f"Zmienna {e.variable_name} nie została zadeklarowana")
 
-    def visitVariableReferencePrimary(self, ctx: kmmszarpParser.VariableReferencePrimaryContext):
+    def visitVariableReferencePrimary(self, ctx: kmmszarpParser.VariableReferencePrimaryContext) -> Variable:
         return self.visit(ctx.variableReference())
 
     def visitMultiplication(self, ctx: kmmszarpParser.MultiplicationContext):
@@ -127,7 +132,6 @@ class Visitor(baseVisitor):
 
         raw_factor_1 = factor_1.value
         raw_factor_2 = factor_2.value
-        result = 0
 
         if operator == "razy":
             result = raw_factor_1 * raw_factor_2
@@ -141,7 +145,7 @@ class Visitor(baseVisitor):
 
         return ParsedExpression(Type.INT, result)
 
-    def visitAddition(self, ctx: kmmszarpParser.AdditionContext):
+    def visitAddition(self, ctx: kmmszarpParser.AdditionContext) -> ParsedExpression:
         term_1: VariableLike = self.visit(ctx.expression(0))
         term_2: VariableLike = self.visit(ctx.expression(1))
         operator = ctx.op.text
@@ -149,16 +153,16 @@ class Visitor(baseVisitor):
         if term_1.dtype != term_2.dtype:
             raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można dodawać różnych typów")
 
-        if term_1.dtype == Type.BOOL:
-            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można dodawać typu " + term_1.dtype.name)
+        if term_1.dtype != Type.INT and term_1.dtype != Type.STRING:
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można dodawać typów " + term_1.dtype.name)
 
         raw_term_1 = term_1.value
         raw_term_2 = term_2.value
 
         addition = True if operator == "dodać" else False
 
+        # Integer addition / subtraction
         if term_1.dtype == Type.INT:
-            result = 0
             if addition:
                 result = raw_term_1 + raw_term_2
             else:
@@ -166,11 +170,12 @@ class Visitor(baseVisitor):
 
             return ParsedExpression(Type.INT, result)
 
+        # String addition
         if addition:
             result = raw_term_1 + raw_term_2
             return ParsedExpression(Type.STRING, result)
-        else:
-            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można odejmować typu napis")
+
+        raise ExecutionError(ctx.start.line, ctx.start.column, f"Nie można odejmować typu {Type.STRING}")
 
     def visitComparison(self, ctx: kmmszarpParser.ComparisonContext):
         left: VariableLike = self.visit(ctx.expression(0))
@@ -195,7 +200,7 @@ class Visitor(baseVisitor):
 
         return ParsedExpression(Type.BOOL, result)
 
-    def visitEquality(self, ctx: kmmszarpParser.EqualityContext):
+    def visitEquality(self, ctx: kmmszarpParser.EqualityContext) -> ParsedExpression:
         left: VariableLike = self.visit(ctx.expression(0))
         right: VariableLike = self.visit(ctx.expression(1))
         operator = ctx.eq.text
@@ -205,7 +210,6 @@ class Visitor(baseVisitor):
 
         raw_left = left.value
         raw_right = right.value
-        result = None
 
         if operator == "równe":
             result = raw_left == raw_right
@@ -213,10 +217,10 @@ class Visitor(baseVisitor):
             result = raw_left != raw_right
 
         return ParsedExpression(Type.BOOL, result)
-    
+
     def visitLogicAnd(self, ctx: kmmszarpParser.LogicAndContext):
-        left = self.visit(ctx.expression(0))
-        right = self.visit(ctx.expression(1))
+        left: VariableLike = self.visit(ctx.expression(0))
+        right: VariableLike = self.visit(ctx.expression(1))
 
         if left.dtype != Type.BOOL or right.dtype != Type.BOOL:
             raise ExecutionError(ctx.start.line, ctx.start.column, "Operacja logiczna AND wymaga typu prawdziwość")
@@ -226,8 +230,8 @@ class Visitor(baseVisitor):
         return ParsedExpression(Type.BOOL, result)
 
     def visitLogicOr(self, ctx: kmmszarpParser.LogicOrContext):
-        left = self.visit(ctx.expression(0))
-        right = self.visit(ctx.expression(1))
+        left: VariableLike = self.visit(ctx.expression(0))
+        right: VariableLike = self.visit(ctx.expression(1))
 
         if left.dtype != Type.BOOL or right.dtype != Type.BOOL:
             raise ExecutionError(ctx.start.line, ctx.start.column, "Operacja logiczna OR wymaga typu prawdziwość")
@@ -263,7 +267,7 @@ class Visitor(baseVisitor):
                 self.visit(statement)
             condition_result = self.visit(ctx.expression())
 
-    def visitLoopFor(self, ctx:kmmszarpParser.LoopForContext):
+    def visitLoopFor(self, ctx: kmmszarpParser.LoopForContext):
         i_name = ctx.ID().getText()
         a: VariableLike = self.visit(ctx.expression(0))
         b: VariableLike = self.visit(ctx.expression(1))
@@ -312,7 +316,8 @@ class Visitor(baseVisitor):
                 try:
                     return ParsedExpression(Type.INT, int(value))
                 except ValueError:
-                    raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można rzutować typu napis na typ liczba")
+                    raise ExecutionError(ctx.start.line, ctx.start.column,
+                                         "Nie można rzutować typu napis na typ liczba")
 
         elif dtype == "napis":
             if expression.dtype == Type.STRING:

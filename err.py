@@ -14,22 +14,29 @@ class VariableError(Exception):
 
 
 class VariableRedeclarationError(VariableError):
-    def __init__(self, variable_name):
+    def __init__(self, variable_name: str):
         self.variable_name = variable_name
 
 
 class VariableNotDeclaredError(VariableError):
-    def __init__(self, variable_name):
+    def __init__(self, variable_name: str):
         self.variable_name = variable_name
 
 
+class VariableTypeMismatchError(VariableError):
+    def __init__(self, variable_name: str, expected_type: "Type", actual_type: "Type"):
+        self.variable_name = variable_name
+        self.expected_type = expected_type
+        self.actual_type = actual_type
+
+
 class VariableNotInitializedError(VariableError):
-    def __init__(self, variable_name):
+    def __init__(self, variable_name: str):
         self.variable_name = variable_name
 
 
 class ExecutionError(Exception):
-    def __init__(self, line, column, msg):
+    def __init__(self, line: int, column: int, msg: str):
         self.line = line
         self.column = column
         self.msg = msg
