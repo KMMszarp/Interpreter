@@ -207,7 +207,7 @@ class Visitor(baseVisitor):
 
         return ParsedExpression(Type.BOOL, result)
     
-        def visitLogicAnd(self, ctx: kmmszarpParser.LogicAndContext):
+    def visitLogicAnd(self, ctx: kmmszarpParser.LogicAndContext):
         left = self.visit(ctx.expression(0))
         right = self.visit(ctx.expression(1))
 
