@@ -113,9 +113,14 @@ class Data:
             raise VariableNotDeclaredError(name)
 
         if isinstance(value, VariableLike):
+            if isinstance(value, Variable) and not value.is_initialized:
+                raise VariableNotInitializedError(value.name)
+
             self.variables[name].value = value.value
+
         elif isinstance(value, (int, str, bool)):
             self.variables[name].value = value
+
         else:
             raise NotImplementedError(f"Nieznany typ {type(value)}")
 
