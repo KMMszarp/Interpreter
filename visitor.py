@@ -149,21 +149,30 @@ class Visitor(baseVisitor):
         if term_1.dtype != term_2.dtype:
             raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można dodawać różnych typów")
 
-        if term_1.dtype != Type.INT:
+        if term_1.dtype == Type.BOOL:
             raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można dodawać typu " + term_1.dtype.name)
 
         raw_term_1 = term_1.value
         raw_term_2 = term_2.value
-        result = 0
+
+        if term_1.dtype == Type.INT:
+            result = 0
+
+            addition = True if operator == "dodać" else False
+
+            if addition:
+                result = raw_term_1 + raw_term_2
+            else:
+                result = raw_term_1 - raw_term_2
+
+            return ParsedExpression(Type.INT, result)
 
         addition = True if operator == "dodać" else False
-
         if addition:
             result = raw_term_1 + raw_term_2
+            return ParsedExpression(Type.STRING, result)
         else:
-            result = raw_term_1 - raw_term_2
-
-        return ParsedExpression(Type.INT, result)
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można odejmować typu STRING")
 
     def visitComparison(self, ctx: kmmszarpParser.ComparisonContext):
         left: VariableLike = self.visit(ctx.expression(0))
