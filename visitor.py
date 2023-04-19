@@ -155,11 +155,10 @@ class Visitor(baseVisitor):
         raw_term_1 = term_1.value
         raw_term_2 = term_2.value
 
+        addition = True if operator == "dodać" else False
+
         if term_1.dtype == Type.INT:
             result = 0
-
-            addition = True if operator == "dodać" else False
-
             if addition:
                 result = raw_term_1 + raw_term_2
             else:
@@ -167,7 +166,6 @@ class Visitor(baseVisitor):
 
             return ParsedExpression(Type.INT, result)
 
-        addition = True if operator == "dodać" else False
         if addition:
             result = raw_term_1 + raw_term_2
             return ParsedExpression(Type.STRING, result)
@@ -302,10 +300,10 @@ class Visitor(baseVisitor):
 
     def visitCast(self, ctx: kmmszarpParser.CastContext):
         expression: VariableLike = self.visit(ctx.expression())
-        type = ctx.dtype().getText()
+        dtype = ctx.dtype().getText()
         value = expression.value
 
-        if type == "liczba":
+        if dtype == "liczba":
             if expression.dtype == Type.INT:
                 return expression
             elif expression.dtype == Type.BOOL:
@@ -316,7 +314,7 @@ class Visitor(baseVisitor):
                 except ValueError:
                     raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można rzutować typu napis na typ liczba")
 
-        elif type == "napis":
+        elif dtype == "napis":
             if expression.dtype == Type.STRING:
                 return expression
             elif expression.dtype == Type.INT:
