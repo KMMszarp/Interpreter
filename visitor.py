@@ -170,7 +170,7 @@ class Visitor(baseVisitor):
             result = raw_term_1 + raw_term_2
             return ParsedExpression(Type.STRING, result)
         else:
-            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można odejmować typu STRING")
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Nie można odejmować typu napis")
 
     def visitComparison(self, ctx: kmmszarpParser.ComparisonContext):
         left: VariableLike = self.visit(ctx.expression(0))
