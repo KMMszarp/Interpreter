@@ -94,8 +94,6 @@ class Visitor(baseVisitor):
                                  f"Zmienna {name} nie została zadeklarowana")
 
         value: VariableLike = self.visit(ctx.expression())
-        expected_type = self.data.variables[name].dtype
-        actual_type = value.dtype
 
         try:
             return self.data.set_variable(name, value)
@@ -312,12 +310,19 @@ class Visitor(baseVisitor):
                 return expression
             elif expression.dtype == Type.BOOL:
                 return ParsedExpression(Type.INT, 1 if value else 0)
-            else:
+            elif expression.dtype == Type.STRING:
+                if value.startswith("minus "):
+                    value = value[6:]
+                    try:
+                        return ParsedExpression(Type.INT, -int(value))
+                    except ValueError:
+                        raise ExecutionError(ctx.start.line, ctx.start.column,
+                                             "Nie można rzutować tego napisu na typ liczba")
                 try:
                     return ParsedExpression(Type.INT, int(value))
                 except ValueError:
                     raise ExecutionError(ctx.start.line, ctx.start.column,
-                                         "Nie można rzutować typu napis na typ liczba")
+                                         "Nie można rzutować tego napisu na typ liczba")
 
         elif dtype == "napis":
             if expression.dtype == Type.STRING:
@@ -333,8 +338,8 @@ class Visitor(baseVisitor):
 
         else:
             if expression.dtype == Type.INT:
-                return ParsedExpression(Type.BOOL, True if expression.value else False)
+                return ParsedExpression(Type.BOOL, True if expression.value != 0 else False)
             elif expression.dtype == Type.STRING:
-                return ParsedExpression(Type.BOOL, True if expression.value != "0" else False)
+                return ParsedExpression(Type.BOOL, True if expression.value != "" else False)
             else:
                 return expression
