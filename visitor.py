@@ -26,13 +26,13 @@ class Visitor(baseVisitor):
                     variable_name = vd.variableDeclarationWithAssignment().ID().getText()
 
                 if self.data.check_if_declared(variable_name):
-                    raise ExecutionError(ctx.start.line, ctx.start.column,
+                    raise ExecutionError(stmt.start.line, stmt.start.column,
                                          f"Zmienna {variable_name} została już zadeklarowana")
 
                 try:
                     variable_type = Type.from_string(raw_variable_type)
                 except NotImplementedError as e:
-                    raise ExecutionError(ctx.start.line, ctx.start.column,
+                    raise ExecutionError(stmt.start.line, stmt.start.column,
                                          f"Błędny typ zmiennej {raw_variable_type}")
 
                 self.data.create_variable(variable_name, variable_type)
