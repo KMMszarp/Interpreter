@@ -266,7 +266,27 @@ class Visitor(baseVisitor):
             condition_result = self.visit(ctx.expression())
 
     def visitLoopFor(self, ctx: kmmszarpParser.LoopForContext):
-        i_name = ctx.ID().getText()
+        i_name = None
+
+        # Create new variable if there is a declaration
+        if ctx.pureVariableDeclaration(): 
+            i_name = ctx.pureVariableDeclaration().ID().getText()
+            i_type_raw = ctx.pureVariableDeclaration().dtype().getText()
+            i_type = None
+
+            if self.data.check_if_declared(i_name):
+                raise ExecutionError(ctx.start.line, ctx.start.column, f"Zmienna {i_name} już istnieje")
+            
+            try:
+                i_type = Type.from_string(i_type_raw)
+            except NotImplementedError as e:
+                raise ExecutionError(ctx.start.line, ctx.start.column,
+                                     f"Błędny typ zmiennej {i_type_raw}")
+            
+            self.data.create_variable(i_name, i_type)
+        else:
+            i_name = ctx.ID().getText()
+
         a: VariableLike = self.visit(ctx.expression(0))
         b: VariableLike = self.visit(ctx.expression(1))
 
