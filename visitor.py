@@ -44,11 +44,84 @@ class Visitor(baseVisitor):
     def visitFunctionCall(self, ctx: kmmszarpParser.FunctionCallContext):
         name = ctx.ID().getText()
 
-        # TODO: Implement arguments
         args = self.visit(ctx.argumentList())
 
         if name == "NAPISZ":
-            print(args)
+            print(args[0])
+        elif self.data.check_if_function_declared(name):
+            try:
+                self.data.increase_nest()
+
+                fun = self.data.get_function(name)
+
+                current_vars = self.data.get_variables(self.data.get_nest_level()).copy()
+
+                if len(args) != len(fun.parameters):
+                    raise ExecutionError(ctx.start.line, ctx.start.column,
+                                         f"Niepoprawna liczba argumentów dla funkcji {name} (oczekiwano {len(fun.parameters)}, otrzymano {len(args)})")
+
+                if len(fun.parameters) > 0:
+                    for i in range(len(args)):
+                        if args[i].dtype != fun.parameters[i].dtype:
+                            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                                 f"Niepoprawny typ argumentu {i} dla funkcji {name} (oczekiwano {fun.parameters[i].dtype}, otrzymano {args[i].dtype})")
+
+                # Deklaracja parametrów
+                for i in range(len(fun.parameters)):
+                    self.data.create_variable(fun.parameters[i].name, fun.parameters[i].dtype,
+                                              self.data.get_nest_level())
+                    self.data.set_variable(fun.parameters[i].name, args[i], self.data.get_nest_level())
+
+                for statement in fun.body:
+                    self.visit(statement)
+
+                if fun.return_statement:
+                    return_output = self.visit(fun.return_statement)
+
+                    # TODO: refactor usuwania zmiennych lokalnych
+
+                    if return_output.dtype != fun.return_type:
+                        raise ExecutionError(ctx.start.line, ctx.start.column,
+                                             f"Zwrócona wartość funkcji {name} jest innego typu niż zadeklarowany")
+
+                    for i in range(len(fun.parameters)):
+                        self.data.remove_variable(fun.parameters[i].name, self.data.get_nest_level())
+
+                    self.data.set_variables(current_vars, self.data.get_nest_level())
+
+                    return return_output
+
+                for i in range(len(fun.parameters)):
+                    self.data.remove_variable(fun.parameters[i].name, self.data.get_nest_level())
+
+                self.data.set_variables(current_vars, self.data.get_nest_level())
+            except ExecutionError as e:
+                raise e
+            finally:
+                self.data.decrease_nest()
+        else:
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Funkcja {name} nie została zadeklarowana")
+
+    def visitFunctionCallPrimary(self, ctx: kmmszarpParser.FunctionCallPrimaryContext):
+        name = ctx.functionCall().ID().getText()
+
+        if name == "NAPISZ":
+            raise ExecutionError(ctx.start.line, ctx.start.column, "Funkcja NAPISZ nie może być użyta jako wyrażenie")
+
+        if not self.data.check_if_function_declared(name):
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Funkcja {name} nie została zadeklarowana")
+
+        if self.data.get_function(name).return_type == Type.VOID:
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 "Funkcja typu nicość nie może być użyta jako wyrażenie")
+
+        return self.visit(ctx.functionCall())
+
+    def visitArgumentList(self, ctx: kmmszarpParser.ArgumentListContext):
+        return [self.visit(argument) for argument in ctx.expression()] + [self.visit(argument) for argument in
+                                                                          ctx.variableDeclaration()]
 
     def visitIntLiteral(self, ctx: kmmszarpParser.IntLiteralContext):
         raw_value = ctx.getText()
@@ -70,17 +143,45 @@ class Visitor(baseVisitor):
         raw_value = ctx.getText() == "prawda"
         return ParsedExpression(Type.BOOL, raw_value)
 
-    # def visitPureVariableDeclaration(self, ctx: kmmszarpParser.PureVariableDeclarationContext):
-    #    name = ctx.ID().getText()
-    #    self.data.create_variable(name)
+    def visitPureVariableDeclaration(self, ctx: kmmszarpParser.PureVariableDeclarationContext):
+        pass
+
+    def visitVariableDeclaration(self, ctx: kmmszarpParser.VariableDeclarationContext):
+        if self.data.get_nest_level() == 0:
+            return
+        raw_variable_type = None
+        variable_name = None
+
+        if ctx.pureVariableDeclaration():
+            raw_variable_type = ctx.pureVariableDeclaration().dtype().getText()
+            variable_name = ctx.pureVariableDeclaration().ID().getText()
+        elif ctx.variableDeclarationWithAssignment():
+            raw_variable_type = ctx.variableDeclarationWithAssignment().dtype().getText()
+            variable_name = ctx.variableDeclarationWithAssignment().ID().getText()
+
+        if self.data.check_if_declared(variable_name):
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Zmienna {variable_name} została już zadeklarowana")
+
+        try:
+            variable_type = Type.from_string(raw_variable_type)
+        except NotImplementedError as e:
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Błędny typ zmiennej {raw_variable_type}")
+
+        self.data.create_variable(variable_name, variable_type, self.data.get_nest_level())
+
+        if ctx.variableDeclarationWithAssignment():
+            self.visit(ctx.variableDeclarationWithAssignment())
 
     def visitVariableDeclarationWithAssignment(self, ctx: kmmszarpParser.VariableDeclarationWithAssignmentContext):
+        # pass
         name = ctx.ID().getText()
         dtype = Type.from_string(ctx.dtype().getText())
         value: VariableLike = self.visit(ctx.expression())
 
         try:
-            return self.data.set_variable(name, value)
+            return self.data.set_variable(name, value, self.data.get_nest_level())
         except VariableTypeMismatchError as e:
             raise ExecutionError(ctx.start.line, ctx.start.column,
                                  f"Nie można przypisać wartości typu {e.actual_type} do zmiennej typu {e.expected_type}"
@@ -106,7 +207,7 @@ class Visitor(baseVisitor):
     def visitVariableReference(self, ctx: kmmszarpParser.VariableReferenceContext) -> Variable:
         name = ctx.ID().getText()
         try:
-            return self.data.get_variable(name)
+            return self.data.get_variable(name, self.data.get_nest_level())
         except VariableNotInitializedError as e:
             raise ExecutionError(ctx.start.line, ctx.start.column,
                                  f"Zmienna {e.variable_name} nie została zainicjalizowana")
@@ -269,20 +370,20 @@ class Visitor(baseVisitor):
         i_name = None
 
         # Create new variable if there is a declaration
-        if ctx.pureVariableDeclaration(): 
+        if ctx.pureVariableDeclaration():
             i_name = ctx.pureVariableDeclaration().ID().getText()
             i_type_raw = ctx.pureVariableDeclaration().dtype().getText()
             i_type = None
 
             if self.data.check_if_declared(i_name):
                 raise ExecutionError(ctx.start.line, ctx.start.column, f"Zmienna {i_name} już istnieje")
-            
+
             try:
                 i_type = Type.from_string(i_type_raw)
             except NotImplementedError as e:
                 raise ExecutionError(ctx.start.line, ctx.start.column,
                                      f"Błędny typ zmiennej {i_type_raw}")
-            
+
             self.data.create_variable(i_name, i_type)
         else:
             i_name = ctx.ID().getText()
@@ -363,3 +464,38 @@ class Visitor(baseVisitor):
                 return ParsedExpression(Type.BOOL, True if expression.value != "" else False)
             else:
                 return expression
+
+    def visitFunctionDefinition(self, ctx: kmmszarpParser.FunctionDefinitionContext):
+        name = ctx.ID().getText()
+        parameters = []
+        statements = ctx.statement()
+        return_type_raw = ctx.dtype().getText()
+        return_type = None
+        return_statement = None
+
+        if ctx.parameterList():
+            parameters = ctx.parameterList().parameter()
+        if ctx.returnStatement():
+            return_statement = ctx.returnStatement()
+
+        if self.data.check_if_function_declared(name):
+            raise ExecutionError(ctx.start.line, ctx.start.column, f"Funkcja {name} już istnieje")
+
+        if self.data.check_if_declared(name):
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Zmienna {name} już istnieje, nie można stworzyć funkcji")
+
+        if return_statement is None and return_type_raw.lower() != "nicość":
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 "Funkcja typu innego niż nicość musi zwracać wartość")
+        try:
+            return_type = Type.from_string(return_type_raw)
+        except NotImplementedError as e:
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Błędny typ zmiennej {return_type_raw}")
+
+        self.data.declare_function(name, return_type, statements, parameters, return_statement)
+
+    def visitReturnStatement(self, ctx: kmmszarpParser.ReturnStatementContext):
+        expression = self.visit(ctx.expression())
+        return expression

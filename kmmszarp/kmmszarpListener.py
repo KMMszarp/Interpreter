@@ -341,6 +341,15 @@ class kmmszarpListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by kmmszarpParser#FunctionCallPrimary.
+    def enterFunctionCallPrimary(self, ctx:kmmszarpParser.FunctionCallPrimaryContext):
+        pass
+
+    # Exit a parse tree produced by kmmszarpParser#FunctionCallPrimary.
+    def exitFunctionCallPrimary(self, ctx:kmmszarpParser.FunctionCallPrimaryContext):
+        pass
+
+
     # Enter a parse tree produced by kmmszarpParser#dtype.
     def enterDtype(self, ctx:kmmszarpParser.DtypeContext):
         pass

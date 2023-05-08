@@ -194,6 +194,11 @@ class kmmszarpVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by kmmszarpParser#FunctionCallPrimary.
+    def visitFunctionCallPrimary(self, ctx:kmmszarpParser.FunctionCallPrimaryContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by kmmszarpParser#dtype.
     def visitDtype(self, ctx:kmmszarpParser.DtypeContext):
         return self.visitChildren(ctx)
