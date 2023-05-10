@@ -161,7 +161,6 @@ class Visitor(baseVisitor):
         return ParsedExpression(Type.BOOL, raw_value)
 
     def visitPureVariableDeclaration(self, ctx: kmmszarpParser.PureVariableDeclarationContext):
-        print("PureVariableDeclaration")
         if self.data.get_nest_level() == 0:
             return
         
@@ -184,7 +183,6 @@ class Visitor(baseVisitor):
         self.data.create_variable(variable_name, variable_type, self.data.get_nest_level())
 
     def visitVariableDeclaration(self, ctx: kmmszarpParser.VariableDeclarationContext):
-        print("VariableDeclaration")
         if self.data.get_nest_level() == 0:
             return
         raw_variable_type = None
@@ -213,7 +211,6 @@ class Visitor(baseVisitor):
             self.visit(ctx.variableDeclarationWithAssignment())
 
     def visitVariableDeclarationWithAssignment(self, ctx: kmmszarpParser.VariableDeclarationWithAssignmentContext):
-        print("VariableDeclarationWithAssignment")
         name = ctx.ID().getText()
         dtype = Type.from_string(ctx.dtype().getText())
         value: VariableLike = self.visit(ctx.expression())
