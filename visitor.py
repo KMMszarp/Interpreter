@@ -46,6 +46,8 @@ class Visitor(baseVisitor):
 
         args = self.visit(ctx.argumentList())
 
+        params = []
+
         if name == "NAPISZ":
             print(args[0])
         elif self.data.check_if_function_declared(name):
@@ -59,18 +61,33 @@ class Visitor(baseVisitor):
                 if len(args) != len(fun.parameters):
                     raise ExecutionError(ctx.start.line, ctx.start.column,
                                          f"Niepoprawna liczba argumentów dla funkcji {name} (oczekiwano {len(fun.parameters)}, otrzymano {len(args)})")
+                
 
                 if len(fun.parameters) > 0:
-                    for i in range(len(args)):
-                        if args[i].dtype != fun.parameters[i].dtype:
-                            raise ExecutionError(ctx.start.line, ctx.start.column,
-                                                 f"Niepoprawny typ argumentu {i} dla funkcji {name} (oczekiwano {fun.parameters[i].dtype}, otrzymano {args[i].dtype})")
+                    for i in range(len(fun.parameters)):
+                        param_name = fun.parameters[i].ID().getText()
+                        raw_param_type = fun.parameters[i].dtype().getText()
+                        param_type = None
 
-                # Deklaracja parametrów
-                for i in range(len(fun.parameters)):
-                    self.data.create_variable(fun.parameters[i].name, fun.parameters[i].dtype,
-                                              self.data.get_nest_level())
-                    self.data.set_variable(fun.parameters[i].name, args[i], self.data.get_nest_level())
+                        if self.data.check_if_available(param_name, self.data.get_nest_level()):
+                            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                                 f"Zmienna {param_name} została już zadeklarowana")
+                        
+                        try:
+                            param_type = Type.from_string(raw_param_type)
+                        except NotImplementedError as e:
+                            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                                 f"Błędny typ parametru {raw_param_type} dla funkcji {name}")
+                        
+                        param = self.data.create_variable(param_name, param_type, self.data.get_nest_level())
+
+                        params.append(param)
+
+                        if args[i].dtype != param.dtype:
+                            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                                 f"Niepoprawny typ argumentu {i} dla funkcji {name} (oczekiwano {param.dtype}, otrzymano {args[i].dtype})")
+                        
+                        self.data.set_variable(param_name, args[i], self.data.get_nest_level())
 
                 for statement in fun.body:
                     self.visit(statement)
@@ -84,15 +101,15 @@ class Visitor(baseVisitor):
                         raise ExecutionError(ctx.start.line, ctx.start.column,
                                              f"Zwrócona wartość funkcji {name} jest innego typu niż zadeklarowany")
 
-                    for i in range(len(fun.parameters)):
-                        self.data.remove_variable(fun.parameters[i].name, self.data.get_nest_level())
+                    for par in params:
+                        self.data.remove_variable(par.name, self.data.get_nest_level())
 
                     self.data.set_variables(current_vars, self.data.get_nest_level())
 
                     return return_output
 
-                for i in range(len(fun.parameters)):
-                    self.data.remove_variable(fun.parameters[i].name, self.data.get_nest_level())
+                for par in params:
+                    self.data.remove_variable(par.name, self.data.get_nest_level())
 
                 self.data.set_variables(current_vars, self.data.get_nest_level())
             except ExecutionError as e:
@@ -144,9 +161,30 @@ class Visitor(baseVisitor):
         return ParsedExpression(Type.BOOL, raw_value)
 
     def visitPureVariableDeclaration(self, ctx: kmmszarpParser.PureVariableDeclarationContext):
-        pass
+        print("PureVariableDeclaration")
+        if self.data.get_nest_level() == 0:
+            return
+        
+        raw_variable_type = ctx.dtype().getText()
+        variable_name = ctx.ID().getText()
+        variable_type = None
+
+        print(variable_name)
+
+        if self.data.check_if_declared(variable_name):
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Zmienna {variable_name} została już zadeklarowana")
+        
+        try:
+            variable_type = Type.from_string(raw_variable_type)
+        except NotImplementedError as e:
+            raise ExecutionError(ctx.start.line, ctx.start.column,
+                                 f"Niepoprawny typ zmiennej {variable_name}")
+        
+        self.data.create_variable(variable_name, variable_type, self.data.get_nest_level())
 
     def visitVariableDeclaration(self, ctx: kmmszarpParser.VariableDeclarationContext):
+        print("VariableDeclaration")
         if self.data.get_nest_level() == 0:
             return
         raw_variable_type = None
@@ -175,7 +213,7 @@ class Visitor(baseVisitor):
             self.visit(ctx.variableDeclarationWithAssignment())
 
     def visitVariableDeclarationWithAssignment(self, ctx: kmmszarpParser.VariableDeclarationWithAssignmentContext):
-        # pass
+        print("VariableDeclarationWithAssignment")
         name = ctx.ID().getText()
         dtype = Type.from_string(ctx.dtype().getText())
         value: VariableLike = self.visit(ctx.expression())
