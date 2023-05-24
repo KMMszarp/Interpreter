@@ -205,7 +205,7 @@ class Data:
         :raises VariableNotInitializedError: If variable with given name exists but is not initialized
         """
 
-        if not self.check_if_available(name, nest_level):
+        if not self.check_if_declared(name):
             raise VariableNotDeclaredError(name)
 
         if not self.variables[nest_level][name].is_initialized:

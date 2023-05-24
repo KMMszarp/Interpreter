@@ -17,6 +17,7 @@ class Visitor(baseVisitor):
                 vd = stmt.variableDeclaration()
                 raw_variable_type = None
                 variable_name = None
+                variable_value = None
 
                 if vd.pureVariableDeclaration():
                     raw_variable_type = vd.pureVariableDeclaration().dtype().getText()
@@ -24,6 +25,7 @@ class Visitor(baseVisitor):
                 elif vd.variableDeclarationWithAssignment():
                     raw_variable_type = vd.variableDeclarationWithAssignment().dtype().getText()
                     variable_name = vd.variableDeclarationWithAssignment().ID().getText()
+                    variable_value = self.visit(vd.variableDeclarationWithAssignment().expression())
 
                 if self.data.check_if_declared(variable_name):
                     raise ExecutionError(stmt.start.line, stmt.start.column,
@@ -36,6 +38,9 @@ class Visitor(baseVisitor):
                                          f"Błędny typ zmiennej {raw_variable_type}")
 
                 self.data.create_variable(variable_name, variable_type)
+
+                if vd.variableDeclarationWithAssignment():
+                    self.data.set_variable(variable_name, variable_value)
 
         # Execute all statements
         for stmt in ctx.statement():
