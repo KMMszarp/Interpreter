@@ -66,7 +66,6 @@ class Visitor(baseVisitor):
                 if len(args) != len(fun.parameters):
                     raise ExecutionError(ctx.start.line, ctx.start.column,
                                          f"Niepoprawna liczba argumentów dla funkcji {name} (oczekiwano {len(fun.parameters)}, otrzymano {len(args)})")
-                
 
                 if len(fun.parameters) > 0:
                     for i in range(len(fun.parameters)):
@@ -74,9 +73,9 @@ class Visitor(baseVisitor):
                         raw_param_type = fun.parameters[i].dtype().getText()
                         param_type = None
 
-                        if self.data.check_if_available(param_name, self.data.get_nest_level()):
-                            raise ExecutionError(ctx.start.line, ctx.start.column,
-                                                 f"Zmienna {param_name} została już zadeklarowana")
+#                        if self.data.check_if_available(param_name, self.data.get_nest_level()):
+#                            raise ExecutionError(ctx.start.line, ctx.start.column,
+#                                                 f"Zmienna {param_name} została już zadeklarowana")
                         
                         try:
                             param_type = Type.from_string(raw_param_type)

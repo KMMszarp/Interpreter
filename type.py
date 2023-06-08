@@ -166,7 +166,7 @@ class Data:
         if nest_level not in self.variables:
             self.variables[nest_level] = {}
 
-        if self.check_if_declared(name):
+        if self.check_if_declared_on_nest(name, nest_level):
             raise VariableRedeclarationError(name)
 
         v = Variable(name, dtype)
@@ -213,7 +213,7 @@ class Data:
 
         return self.variables[nest_level][name]
 
-    def set_variable(self, name: str, value: str | int | bool | VariableLike, nest_level: int = 0) -> Variable:
+    def set_variable(self, name: str, value: str | int | bool | VariableLike, nest_level: int = None) -> Variable:
         """
         Sets a variable to a given value
 
@@ -226,6 +226,9 @@ class Data:
         :raises VariableTypeMismatchError: If value is a VariableLike, and the types mismatch
         :raises NotImplementedError: If value is not a Variable, int, str or bool
         """
+
+        if nest_level is None:
+            nest_level = self.nest_level
 
         if not self.check_if_available(name, nest_level):
             raise VariableNotDeclaredError(name)
@@ -248,6 +251,25 @@ class Data:
         self.variables[nest_level][name].is_initialized = True
         return self.variables[nest_level][name]
 
+    def check_if_declared_on_nest(self, name: str, nest_level: int = None):
+        """
+        Checks if a variable with given name is declared on given nest level
+
+        :param name: Name of the variable to check
+        :param nest_level: Nest level of the variable
+        :return: True if variable is declared, False otherwise
+        """
+        if nest_level is None:
+            nest_level = self.nest_level
+
+        if nest_level not in self.variables:
+            return False
+
+        if name in self.variables[nest_level]:
+            return True
+
+        return False
+
     def check_if_declared(self, name: str) -> bool:
         """
         Checks if a variable with given name is declared
@@ -255,6 +277,7 @@ class Data:
         :param name: Name of the variable to check
         :return: True if variable is declared, False otherwise
         """
+
         # TODO: Czy można przykrywać zmienne o tej samej nazwie w różnych zakresach?
         # TODO: można zdeklarować w wyższym jeśli jest tylko w niższym
         for i in range(0, len(self.variables)):
@@ -263,7 +286,7 @@ class Data:
 
         return False
 
-    def check_if_available(self, name: str, nest_level: int = 0) -> bool:
+    def check_if_available(self, name: str, nest_level: int = None) -> bool:
         """
         Checks if a variable with given name is available
 
@@ -271,6 +294,9 @@ class Data:
         :param nest_level: Nest level of the variable
         :return: True if variable is available, False otherwise
         """
+        if nest_level is None:
+            nest_level = self.nest_level
+
         if not self.check_if_declared(name):
             return False
 
