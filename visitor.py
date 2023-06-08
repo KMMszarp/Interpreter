@@ -17,7 +17,7 @@ class Visitor(baseVisitor):
                 vd = stmt.variableDeclaration()
                 raw_variable_type = None
                 variable_name = None
-                variable_value = None
+                # variable_value = None
 
                 if vd.pureVariableDeclaration():
                     raw_variable_type = vd.pureVariableDeclaration().dtype().getText()
@@ -25,7 +25,7 @@ class Visitor(baseVisitor):
                 elif vd.variableDeclarationWithAssignment():
                     raw_variable_type = vd.variableDeclarationWithAssignment().dtype().getText()
                     variable_name = vd.variableDeclarationWithAssignment().ID().getText()
-                    variable_value = self.visit(vd.variableDeclarationWithAssignment().expression())
+                    # variable_value = self.visit(vd.variableDeclarationWithAssignment().expression())
 
                 if self.data.check_if_declared(variable_name):
                     raise ExecutionError(stmt.start.line, stmt.start.column,
@@ -39,8 +39,8 @@ class Visitor(baseVisitor):
 
                 self.data.create_variable(variable_name, variable_type)
 
-                if vd.variableDeclarationWithAssignment():
-                    self.data.set_variable(variable_name, variable_value)
+                # if vd.variableDeclarationWithAssignment():
+                #     self.data.set_variable(variable_name, variable_value)
 
         # Execute all statements
         for stmt in ctx.statement():
@@ -76,13 +76,13 @@ class Visitor(baseVisitor):
 #                        if self.data.check_if_available(param_name, self.data.get_nest_level()):
 #                            raise ExecutionError(ctx.start.line, ctx.start.column,
 #                                                 f"Zmienna {param_name} została już zadeklarowana")
-                        
+
                         try:
                             param_type = Type.from_string(raw_param_type)
                         except NotImplementedError as e:
                             raise ExecutionError(ctx.start.line, ctx.start.column,
                                                  f"Błędny typ parametru {raw_param_type} dla funkcji {name}")
-                        
+
                         param = self.data.create_variable(param_name, param_type, self.data.get_nest_level())
 
                         params.append(param)
@@ -90,7 +90,7 @@ class Visitor(baseVisitor):
                         if args[i].dtype != param.dtype:
                             raise ExecutionError(ctx.start.line, ctx.start.column,
                                                  f"Niepoprawny typ argumentu {i} dla funkcji {name} (oczekiwano {param.dtype}, otrzymano {args[i].dtype})")
-                        
+
                         self.data.set_variable(param_name, args[i], self.data.get_nest_level())
 
                 for statement in fun.body:
@@ -167,7 +167,7 @@ class Visitor(baseVisitor):
     def visitPureVariableDeclaration(self, ctx: kmmszarpParser.PureVariableDeclarationContext):
         if self.data.get_nest_level() == 0:
             return
-        
+
         raw_variable_type = ctx.dtype().getText()
         variable_name = ctx.ID().getText()
         variable_type = None
@@ -177,16 +177,19 @@ class Visitor(baseVisitor):
         if self.data.check_if_declared(variable_name):
             raise ExecutionError(ctx.start.line, ctx.start.column,
                                  f"Zmienna {variable_name} została już zadeklarowana")
-        
+
         try:
             variable_type = Type.from_string(raw_variable_type)
         except NotImplementedError as e:
             raise ExecutionError(ctx.start.line, ctx.start.column,
                                  f"Niepoprawny typ zmiennej {variable_name}")
-        
+
         self.data.create_variable(variable_name, variable_type, self.data.get_nest_level())
 
     def visitVariableDeclaration(self, ctx: kmmszarpParser.VariableDeclarationContext):
+        if self.data.get_nest_level() == 0 and ctx.variableDeclarationWithAssignment():
+            self.visit(ctx.variableDeclarationWithAssignment())
+
         if self.data.get_nest_level() == 0:
             return
         raw_variable_type = None
